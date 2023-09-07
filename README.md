@@ -1,9 +1,25 @@
 # MindMentor
- MindMentor is a comprehensive remote mental health and mentoring support platform designed to provide accessible and effective mental health care and mentorship opportunities. The platform fosters holistic personal development through secure video sessions, real-time messaging, and a rich resource hub.
 
- ## Project Structure
- ```
- MindMentor-app/
+MindMentor is a comprehensive remote mental health and mentoring support platform designed to provide accessible and effective mental health care and mentorship opportunities. The platform fosters holistic personal development through secure video sessions, real-time messaging, and a rich resource hub.
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+
+## Project Structure
+
+```
+MindMentor-app/
 │
 ├── client/             (Frontend)
 │   ├── public/         (Public assets like images)
@@ -33,4 +49,3 @@
 ├── README.md           (Project documentation)
 ├── LICENSE             (Project license)
 ```
-
