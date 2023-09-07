@@ -2,6 +2,7 @@
  MindMentor is a comprehensive remote mental health and mentoring support platform designed to provide accessible and effective mental health care and mentorship opportunities. The platform fosters holistic personal development through secure video sessions, real-time messaging, and a rich resource hub.
 
  ## Project Structure
+ ```
  MindMentor-app/
 │
 ├── client/             (Frontend)
@@ -31,4 +32,5 @@
 ├── .gitignore          (Git ignore configuration)
 ├── README.md           (Project documentation)
 ├── LICENSE             (Project license)
+```
 
