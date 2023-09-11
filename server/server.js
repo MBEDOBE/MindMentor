@@ -6,9 +6,18 @@ const mongoose = require("mongoose");
 
 // To have environment variuables in .env files
 require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+
+// To have environment variuables in .env files
+require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4001;
+
+app.use(cors());
+app.use(express.json());
 
 // Connect to MongoDB using Mongoose
 mongoose.connect("mongodb://localhost/mydatabase", {
@@ -25,7 +34,12 @@ app.get("/", (req, res) => {
   res.send("Hello, MindMentor App!");
 });
 
-// Start the server
+//Require the files
+const UsersRouter = require("./routes/users");
+//Use the files
+app.use("/users", UsersRouter);
+
+// Starting the server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is actively running on port ${port}`);
 });
