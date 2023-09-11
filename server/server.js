@@ -29,6 +29,11 @@ app.get("/", (req, res) => {
   res.send("Hello, MindMentor App!");
 });
 
+//Require the files
+const UsersRouter = require("./routes/users");
+//Use the files
+app.use("/users", UsersRouter);
+
 // Starting the server
 app.listen(port, () => {
   console.log(`Server is actively running on port ${port}`);
