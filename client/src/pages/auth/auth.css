@@ -2,4 +2,88 @@
   --bg-color: #f1c6b8;
   --white: #ffffff;
   --primary: #235542;
+  --text-color: #fefefe;
+}
+.bg {
+  background-color: var(--bg-color);
+}
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  color: var(--white);
+}
+.form-container {
+  width: 450px;
+  margin: auto;
+  background: var(--primary);
+  box-shadow: 3px 3px 5px aqua;
+  padding: 30px 45px 30px 55px;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--text-color);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  color: var(--text-color) !important;
+}
+.form-control:focus {
+  box-shadow: none !important;
+}
+.auth-btn {
+  background-color: var(--bg-color) !important;
+  font-size: 1.2rem !important;
+}
+.auth-btn:hover {
+  color: var(--primary) !important;
+}
+.form-container img {
+  width: 80px;
+}
+.contrast {
+  filter: invert(100%);
+}
+.form-container span {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--bg-color);
+}
+.form-container .colored {
+  color: var(--white);
+}
+.form-container ::placeholder,
+a {
+  color: var(--text-color) !important;
+}
+.remember {
+  display: flex;
+  justify-content: space-between;
+}
+.forgot-password a {
+  color: var(--bg-color) !important;
+}
+
+@media (max-width: 430px) {
+  .form-container {
+    width: 100%;
+  }
+  .top-text {
+    font-size: 1rem;
+  }
+  .remember label,
+  p {
+    font-size: 0.8rem;
+  }
 }
