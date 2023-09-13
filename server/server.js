@@ -1,5 +1,11 @@
-// Server connections
+// Server connection
 
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+
+// To have environment variuables in .env files
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -14,8 +20,7 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB using Mongoose
-const uri = process.env.ATLASURI;
-mongoose.connect(uri, {
+mongoose.connect("mongodb://localhost/mydatabase", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
