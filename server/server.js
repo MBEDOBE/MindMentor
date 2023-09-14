@@ -34,9 +34,9 @@ app.get("/", (req, res) => {
   res.send("Hello, MindMentor App!");
 });
 
-//Require the files
+//Require the API routes/files
 const UsersRouter = require("./routes/users");
-//Use the files
+//Use the API/files
 app.use("/users", UsersRouter);
 
 // Starting the server
