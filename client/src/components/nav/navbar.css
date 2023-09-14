@@ -1,0 +1,45 @@
+:root {
+  --bg-color: #f1c6b8;
+  --white: #ffffff;
+  --primary: #235542;
+  --text-color: #fefefe;
+  --gray: #333333;
+}
+.navbar-brand img {
+  width: 70px;
+}
+nav {
+  width: 95%;
+}
+.navbar-nav a {
+  color: #333 !important;
+  font-size: 1.225rem !important;
+}
+.menu a {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.navbar-nav a:hover {
+  color: var(--bg-color) !important;
+  font-weight: 700;
+}
+.nav-item:active {
+  border-top: 2px solid var(--bg-color);
+}
+.navbar-nav .btn-primary {
+  background-color: transparent !important;
+  border: none !important;
+  color: var(--primary) !important;
+}
+.navbar-nav .btn-primary:hover {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+}
+.navbar-nav .btn-sign {
+  background-color: var(--bg-color);
+  color: var(--gray) !important;
+}
+.navbar-nav .btn-sign:hover {
+  background-color: #dcdcdc !important;
+  color: var(--primary) !important;
+}
