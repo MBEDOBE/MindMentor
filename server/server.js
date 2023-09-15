@@ -1,11 +1,4 @@
 // Server connection
-
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-
-// To have environment variuables in .env files
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -20,14 +13,17 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB using Mongoose
-mongoose.connect("mongodb://localhost/mydatabase", {
+const uri = process.env.ATLASURI;
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
 db.on("error", (error) => console.error("MongoDB connection error:", error));
-db.once("open", () => console.log("Connected to MongoDB"));
+db.once("open", () =>
+  console.log("Connected to MongoDB(Mindmentor Database) Successfully")
+);
 
 // Define your API routes here
 app.get("/", (req, res) => {
