@@ -1,0 +1,24 @@
+:root {
+  --bg-color: #f1c6b8;
+  --white: #ffffff;
+  --primary: #235542;
+  --text-color: #fefefe;
+  --gray: #333333;
+}
+
+.bg-footer{
+  width: 95%;
+  background-color: var(--bg-color);
+}
+.container{
+  font-size: 1.25rem;
+}
+footer img{
+  width: 15%;
+}
+footer a {
+  color: #333 !important;
+}
+footer a:first-child{
+  margin-right: 0.6rem;
+}

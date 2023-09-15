@@ -1,5 +1,4 @@
 // Server connection
-
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -14,23 +13,26 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB using Mongoose
-mongoose.connect("mongodb://localhost/mydatabase", {
+const uri = process.env.ATLASURI;
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
 db.on("error", (error) => console.error("MongoDB connection error:", error));
-db.once("open", () => console.log("Connected to MongoDB"));
+db.once("open", () =>
+  console.log("Connected to MongoDB(Mindmentor Database) Successfully")
+);
 
 // Define your API routes here
 app.get("/", (req, res) => {
   res.send("Hello, MindMentor App!");
 });
 
-//Require the files
+//Require the API routes/files
 const UsersRouter = require("./routes/users");
-//Use the files
+//Use the API/files
 app.use("/users", UsersRouter);
 
 // Starting the server
