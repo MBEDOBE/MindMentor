@@ -24,7 +24,7 @@ const Login = () => {
               <MdAlternateEmail />
               <input
                 type="text"
-                className="form-control"
+                className="form-control auth-input"
                 placeholder="Enter username"
                 required
               />
@@ -33,7 +33,7 @@ const Login = () => {
               <BsFillUnlockFill />
               <input
                 type="password"
-                className="form-control input-field"
+                className="form-control auth-input"
                 placeholder="Enter password"
                 required
               />

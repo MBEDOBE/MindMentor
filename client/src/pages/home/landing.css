@@ -1,0 +1,127 @@
+:root {
+  --bg-color: #f1c6b8;
+  --white: #ffffff;
+  --primary: #235542;
+  --btext-color: #333333;
+}
+.card::after {
+  display: block;
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: 35px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 19px 28px 5px rgba(64, 64, 64, 0.09);
+  box-shadow: 0 19px 28px 5px rgba(64, 64, 64, 0.09);
+  content: '';
+  z-index: -1;
+}
+.card-shad {
+  width: 90px !important;
+  height: 90px !important;
+  margin-top: -45px !important;
+}
+a.card {
+  text-decoration: none;
+}
+
+.card {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  background-color: #fff;
+  -webkit-box-shadow: 0 12px 20px 1px rgba(64, 64, 64, 0.09);
+  box-shadow: 0 12px 20px 1px rgba(64, 64, 64, 0.09);
+}
+.card {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0 12px 20px 1px rgba(64, 64, 64, 0.09) !important;
+  box-shadow: 0 12px 20px 1px rgba(64, 64, 64, 0.09) !important;
+}
+
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
+}
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}
+
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
+}
+.d-block {
+  display: block !important;
+}
+img,
+figure {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.description {
+  padding-top: 12px;
+  color: #8c8c8c;
+}
+
+.text-sm {
+  font-size: 12px !important;
+}
+p,
+.p {
+  margin: 0 0 16px !important;
+}
+
+.heading {
+  margin: 0 !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px !important;
+  font-weight: 900 !important;
+  color: #8c8c8c !important;
+}
+
+.pt-1,
+.py-1 {
+  padding-top: 0.25rem !important;
+}
+.bg-cta {
+  background-color: var(--primary);
+}
+.bg-cta h3 {
+  color: var(--bg-color);
+}
+.btn-sign {
+  background-color: var(--bg-color) !important;
+  color: var(--btext-color) !important;
+}
+.text-custom{
+  color: var(--primary);
+}

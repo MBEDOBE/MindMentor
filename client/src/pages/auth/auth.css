@@ -33,7 +33,7 @@
   margin-bottom: 20px;
 }
 
-.form-control {
+.auth-input{
   border: none !important;
   outline: none !important;
   background: transparent !important;
