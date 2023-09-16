@@ -32,8 +32,47 @@ app.get("/", (req, res) => {
 
 //Require the API routes/files
 const UsersRouter = require("./routes/users");
+
 //Use the API/files
 app.use("/users", UsersRouter);
+
+// initial() function to create 3 important rows in roles collection
+const Role = db.role;
+function initial() {
+	Role.estimateDocumentCount((err, count) => {
+		if (!err && count === 0) {
+			new Role({
+				name: "user"
+			}).save(err => {
+				if (err) {
+					console.log("error", err);
+				}
+
+				console.log("added 'user' to the role collection");
+			});
+
+			new Role({
+				name: "moderator"
+			}).save(err => {
+				if (err) {
+					console.log("eror", err);
+				}
+
+				console.log("added 'moderator' tp roles colection");
+			});
+
+			new Role({
+				name: "admin"
+			}).save(err => {
+				if (err) {
+					console.log("error", err);
+				}
+
+				console.log("added 'admin' to roles collection");
+			});
+		}
+	});
+}
 
 // Starting the server
 app.listen(port, () => {
