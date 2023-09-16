@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
@@ -73,6 +73,11 @@ function initial() {
 		}
 	});
 }
+
+//routes
+
+require('./routes/auth.routes')(app);
+require('./routes/user.routes')(app);
 
 // Starting the server
 app.listen(port, () => {
