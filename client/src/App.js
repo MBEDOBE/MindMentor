@@ -1,16 +1,16 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Landing from "./pages/home/Landing";
-import "./App.css";
-import React from "react";
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import NavBar from './components/nav/Navbar';
+import Footer from './components/footer/Footer';
+import Landing from './pages/home/Landing';
+import './App.css';
+
 
 const Layout = () => {
   return (
     <>
-      <Navbar />
+      <NavBar />
       <Outlet />
       <Footer />
     </>
