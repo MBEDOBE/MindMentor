@@ -30,7 +30,7 @@ const Register = () => {
               <BsPersonCircle />
               <input
                 type="text"
-                className="form-control"
+                className="form-control auth-input"
                 placeholder="Full name"
                 required
               />
@@ -39,7 +39,7 @@ const Register = () => {
               <BsFillEnvelopeAtFill />
               <input
                 type="email"
-                className="form-control"
+                className="form-control auth-input"
                 placeholder="Enter email"
                 required
               />
@@ -48,7 +48,7 @@ const Register = () => {
               <BsFillPersonCheckFill />
               <input
                 type="text"
-                className="form-control"
+                className="form-control auth-input"
                 placeholder="Username"
                 required
               />
@@ -58,7 +58,7 @@ const Register = () => {
               <BsShieldLockFill />
               <input
                 type="password"
-                className="form-control input-field"
+                className="form-control auth-input"
                 placeholder="Enter password"
                 required
               />
