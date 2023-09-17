@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Login from "./pages/auth/Login";
 import Register from "./pages/auth/Register";
@@ -10,20 +9,6 @@ import "./App.css";
 import ProfilePage from "./pages/profile/Profile";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
-=======
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import NavBar from './components/nav/Navbar';
-import Footer from './components/footer/Footer';
-import Landing from './pages/home/Landing';
-import Resources from './pages/resources/Resources';
-import './App.css';
-import ProfilePage from './pages/profile/Profile';
-import About from './pages/about/About';
-import Contact from './pages/contact/Contact';
-
->>>>>>> e576678df68377abf6d5bd9b3067296585aba52a
 
 const Layout = () => {
   return (
@@ -46,7 +31,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/resources",
-<<<<<<< HEAD
         element: <Resources />,
       },
       {
@@ -61,22 +45,6 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-=======
-        element: <Resources/>
-      },
-      {
-        path: "/profile",
-        element: <ProfilePage/>
-      },
-      {
-        path: "/about",
-        element: <About/>
-      },
-      {
-        path: "/contact",
-        element: <Contact/>
-      }
->>>>>>> e576678df68377abf6d5bd9b3067296585aba52a
     ],
   },
   {
