@@ -3,8 +3,10 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { MdAlternateEmail } from 'react-icons/md';
 import './contact.css';
+import ProfileCard from '../../components/profiles/ProfileCard';
 const Contact = () => {
   return (
+    <>
     <div className="container">
       <div className="card mb-3 shadow-lg">
         <div className="card-body">
@@ -45,8 +47,8 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                <div class="d-grid">
-                  <button class="btn btn-primary btn-lg" type="submit">
+                <div className="d-grid">
+                  <button className="btn btn-primary btn-lg" type="submit">
                     Submit
                   </button>
                 </div>
@@ -96,6 +98,8 @@ const Contact = () => {
         </div>
       </div>
     </div>
+    <ProfileCard/>
+    </>
   );
 };
 

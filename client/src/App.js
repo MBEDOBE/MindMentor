@@ -9,6 +9,7 @@ import './App.css';
 import ProfilePage from './pages/profile/Profile';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
+import MyCarousel from './pages/test';
 
 
 const Layout = () => {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact/>
+      },
+      {
+        path: "/test",
+        element: <MyCarousel/>
       }
     ],
   },
