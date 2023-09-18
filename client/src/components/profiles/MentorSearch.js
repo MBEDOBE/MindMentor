@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Carousel, Button } from 'react-bootstrap';
 import './profiles.css';
 
 const MentorSearch = () => {
