@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import {
   BsFillEnvelopeAtFill,
   BsPersonCircle,
   BsShieldLockFill,
   BsFillPersonCheckFill,
-} from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-import './auth.css';
+} from "react-icons/bs";
+import { Link } from "react-router-dom";
+import "./auth.css";
 const Register = () => {
   return (
     <div className="bg">
@@ -14,11 +14,7 @@ const Register = () => {
         <div className="form-container sm:container-fluid">
           <form>
             <Link to="/" className="mb-5">
-              <img
-                src="./logo192.png"
-                alt="MindMentor Logo"
-                className="mb-3 contrast"
-              />
+              <img src="./logo192.png" alt="MindMentor Logo" className="mb-3" />
               <span>
                 Mind<span className="colored">Mentor</span>
               </span>
@@ -60,6 +56,16 @@ const Register = () => {
                 type="password"
                 className="form-control auth-input"
                 placeholder="Enter password"
+                required
+              />
+            </div>
+
+            <div className="input-container mb-3">
+              <BsShieldLockFill />
+              <input
+                type="password"
+                className="form-control auth-input"
+                placeholder="Confirm password"
                 required
               />
             </div>

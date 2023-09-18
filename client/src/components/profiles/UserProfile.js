@@ -17,7 +17,6 @@ const UserProfile = () => {
               <h4>John Doe</h4>
               <p className="text-secondary mb-1">Full Stack Developer</p>
               <p className="text-muted font-size-sm">Wakanda, VK</p>
-              <div className="d-flex justify-content-center align-items-center gap-4"></div>
             </div>
           </div>
         </div>

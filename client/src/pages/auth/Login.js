@@ -1,21 +1,19 @@
-import React from 'react';
-import {  BsFillUnlockFill } from 'react-icons/bs';
-import { MdAlternateEmail } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import './auth.css';
+import React from "react";
+import { BsFillUnlockFill } from "react-icons/bs";
+import { MdAlternateEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
+import "./auth.css";
 const Login = () => {
   return (
     <div className="bg">
       <div className="login-container container ">
         <div className="form-container sm:container-fluid">
           <form>
-            <Link to="/" className='mb-5'>
-              <img
-                src="./logo192.png"
-                alt="MindMentor Logo"
-                className="mb-3 contrast"
-              />
-              <span>Mind<span className='colored'>Mentor</span></span>
+            <Link to="/" className="mb-5">
+              <img src="./logo192.png" alt="MindMentor Logo" className="mb-3" />
+              <span>
+                Mind<span className="colored">Mentor</span>
+              </span>
             </Link>
             <h5 className="top-text text-center mb-4">
               Please Login to your account.
