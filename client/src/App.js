@@ -1,15 +1,14 @@
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import Login from './pages/auth/Login';
-import Register from './pages/auth/Register';
-import NavBar from './components/nav/Navbar';
-import Footer from './components/footer/Footer';
-import Landing from './pages/home/Landing';
-import Resources from './pages/resources/Resources';
-import './App.css';
-import ProfilePage from './pages/profile/Profile';
-import About from './pages/about/About';
-import Contact from './pages/contact/Contact';
-
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import NavBar from "./components/nav/Navbar";
+import Footer from "./components/footer/Footer";
+import Landing from "./pages/home/Landing";
+import Resources from "./pages/resources/Resources";
+import "./App.css";
+import ProfilePage from "./pages/profile/Profile";
+import About from "./pages/about/About";
+import Contact from "./pages/contact/Contact";
 
 const Layout = () => {
   return (
@@ -32,20 +31,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/resources",
-        element: <Resources/>
+        element: <Resources />,
       },
       {
         path: "/profile",
-        element: <ProfilePage/>
+        element: <ProfilePage />,
       },
       {
         path: "/about",
-        element: <About/>
+        element: <About />,
       },
       {
         path: "/contact",
-        element: <Contact/>
-      }
+        element: <Contact />,
+      },
     ],
   },
   {
