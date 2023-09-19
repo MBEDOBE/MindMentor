@@ -14,6 +14,7 @@ import { registerRoute } from "../api-routes/APIRoutes";
 
 const Register = () => {
   const navigate = useNavigate();
+  //error notification
   const toastOptions = {
     position: "top-right",
     autoClose: 8000,
@@ -21,6 +22,13 @@ const Register = () => {
     draggable: true,
     theme: "dark",
   };
+
+  //user loggedin redirect
+  useEffect(() => {
+    if (localStorage.getItem("mindmentor-user")) {
+      navigate("/");
+    }
+  }, []);
 
   const [values, setValues] = useState({
     fullname: "",
@@ -87,10 +95,6 @@ const Register = () => {
 
     return true;
   };
-
-  //error notification
-
-  //connect it to the server
 
   return (
     <div className="bg">
