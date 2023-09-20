@@ -10,6 +10,8 @@ import ProfilePage from "./pages/profile/Profile";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import Chat from "./pages/chat/Chat";
+import MentorProfile from './components/profiles/MentorProfile';
+
 
 const Layout = () => {
   return (
@@ -45,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/mentor",
+        element: <MentorProfile />,
       },
     ],
   },
