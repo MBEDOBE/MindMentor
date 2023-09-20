@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { BsFillUnlockFill } from "react-icons/bs";
-import { MdAlternateEmail } from "react-icons/md";
-import "./auth.css";
-import { Link, useNavigate } from "react-router-dom";
-import "./auth.css";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import { loginRoute } from "../api-routes/APIRoutes";
+import React, { useState, useEffect } from 'react';
+import { BsFillUnlockFill } from 'react-icons/bs';
+import { MdAlternateEmail } from 'react-icons/md';
+import './auth.css';
+import { Link, useNavigate } from 'react-router-dom';
+import './auth.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
+import { loginRoute } from '../api-routes/APIRoutes';
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   //error notification
   const toastOptions = {
-    position: "top-right",
+    position: 'top-right',
     autoClose: 8000,
     pauseOnHover: true,
     draggable: true,
-    theme: "dark",
+    theme: 'dark',
   };
 
   //user loggedin redirect
   useEffect(() => {
-    if (localStorage.getItem("mindmentor-user")) {
-      navigate("/");
+    if (localStorage.getItem('mindmentor-user')) {
+      navigate('/');
     }
   }, []);
 
   const [values, setValues] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
 
   //handle submit
@@ -45,8 +45,9 @@ const Login = () => {
         toast.error(data.msg, toastOptions);
       }
       if (data.status === true) {
-        localStorage.setItem("mindmentor-user", JSON.stringify(data.user));
-        navigate("/");
+        localStorage.setItem('mindmentor-user', JSON.stringify(data.user));
+        navigate('/');
+        setIsAuthenticated(true);
       }
     }
   };
@@ -59,11 +60,11 @@ const Login = () => {
   //handle validation
   const validateForm = () => {
     const { username, password } = values;
-    if (username === "") {
-      toast.error("Username/Email and Password is required", toastOptions);
+    if (username === '') {
+      toast.error('Username/Email and Password is required', toastOptions);
       return false;
-    } else if (password === "") {
-      toast.error("Username/Email and Password is required", toastOptions);
+    } else if (password === '') {
+      toast.error('Username/Email and Password is required', toastOptions);
       return false;
     }
     return true;

@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import "./navbar.css";
-const NavBar = () => {
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import './navbar.css';
+const NavBar = ({ isAuthenticated }) => {
   return (
     <>
       <Navbar
@@ -33,18 +33,23 @@ const NavBar = () => {
               </Link>
             </Nav>
             <Nav className="gap-4">
-              <Link className="btn btn-primary" to="/logout">
-                Logout
-              </Link>
-              <Link className="btn btn-primary" to="/login">
-                Login
-              </Link>
-              <Link
-                className="btn btn-light text-black btn-sign"
-                to="/register"
-              >
-                Sign up
-              </Link>
+              {isAuthenticated ? (
+                <Link className="btn btn-primary" to="/logout">
+                  Logout
+                </Link>
+              ) : (
+                <Link className="btn btn-primary" to="/login">
+                  Login
+                </Link>
+              )}
+              {!isAuthenticated && (
+                <Link
+                  className="btn btn-light text-black btn-sign"
+                  to="/register"
+                >
+                  Sign up
+                </Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
