@@ -1,27 +1,12 @@
-const { verifySignUp } = require("../middlewares");
-const authController = require("../controllers/auth.controller");
+const {
+  register,
+  login,
+  getAllUsers,
+} = require("../controllers/users.controller");
 
-module.exports = function (app) {
-  // Enable CORS and allow necessary headers
-  app.use(function (req, res, next) {
-    res.header(
-      "Access-Control-Allow-Headers",
-      "x-access-token, Origin, Content-Type, Accept"
-    );
-    next();
-  });
+const router = require("express").Router();
 
-  // Route for user signup
-  app.post(
-    "/api/auth/signup",
-    [
-      verifySignUp.checkDuplicateUsernameOrEmail,
-      verifySignUp.checkRolesExisted,
-    ],
-    authController.signup
-  );
-
-  // Route for user signin
-  app.post("/api/auth/signin", authController.signin);
-};
-
+router.post("/register", register);
+router.post("/login", login);
+router.get("/allusers/:id", getAllUsers);
+module.exports = router;
