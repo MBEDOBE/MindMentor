@@ -9,6 +9,7 @@ import "./App.css";
 import ProfilePage from "./pages/profile/Profile";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+import Chat from "./pages/chat/Chat";
 
 const Layout = () => {
   return (
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/chat",
+    element: <Chat />,
   },
 ]);
 function App() {

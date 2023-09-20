@@ -33,6 +33,9 @@ const NavBar = () => {
               </Link>
             </Nav>
             <Nav className="gap-4">
+              <Link className="btn btn-primary" to="/logout">
+                Logout
+              </Link>
               <Link className="btn btn-primary" to="/login">
                 Login
               </Link>
