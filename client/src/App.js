@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
@@ -68,11 +68,11 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  
   return (
     <div className="app">
-      <RouterProvider router={router} />
-      <NavBar isAuthenticated={isAuthenticated} />
+      <RouterProvider router={router}>
+      </RouterProvider>
     </div>
   );
 }

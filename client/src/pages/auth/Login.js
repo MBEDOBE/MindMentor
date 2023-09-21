@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { loginRoute } from '../api-routes/APIRoutes';
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = () => {
   const navigate = useNavigate();
   //error notification
   const toastOptions = {
@@ -23,7 +23,7 @@ const Login = ({ setIsAuthenticated }) => {
   //user loggedin redirect
   useEffect(() => {
     if (localStorage.getItem('mindmentor-user')) {
-      navigate('/');
+      navigate('/login');
     }
   }, []);
 
@@ -47,7 +47,7 @@ const Login = ({ setIsAuthenticated }) => {
       if (data.status === true) {
         localStorage.setItem('mindmentor-user', JSON.stringify(data.user));
         navigate('/');
-        setIsAuthenticated(true);
+        console.log(data)
       }
     }
   };
@@ -91,6 +91,7 @@ const Login = ({ setIsAuthenticated }) => {
                 className="form-control auth-input"
                 placeholder="Enter username"
                 name="username"
+                autoComplete="username"
                 onChange={(e) => handleChange(e)}
                 min="3"
                 required

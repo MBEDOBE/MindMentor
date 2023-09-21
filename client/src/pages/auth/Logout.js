@@ -1,12 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Logout({ setIsAuthenticated }) {
+export default function Logout() {
   const navigate = useNavigate();
   const handleClick = async () => {
     localStorage.clear();
-    navigate('/login');
-    setIsAuthenticated(false);
+    navigate('/');
   };
 
   return (

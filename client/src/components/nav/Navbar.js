@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './navbar.css';
-const NavBar = ({ isAuthenticated }) => {
+const NavBar = () => {
   return (
     <>
       <Navbar
@@ -33,23 +33,18 @@ const NavBar = ({ isAuthenticated }) => {
               </Link>
             </Nav>
             <Nav className="gap-4">
-              {isAuthenticated ? (
-                <Link className="btn btn-primary" to="/logout">
-                  Logout
-                </Link>
-              ) : (
-                <Link className="btn btn-primary" to="/login">
-                  Login
-                </Link>
-              )}
-              {!isAuthenticated && (
-                <Link
-                  className="btn btn-light text-black btn-sign"
-                  to="/register"
-                >
-                  Sign up
-                </Link>
-              )}
+              <Link className="btn btn-primary" to="/logout">
+                Logout
+              </Link>
+              <Link className="btn btn-primary" to="/login">
+                Login
+              </Link>
+              <Link
+                className="btn btn-light text-black btn-sign"
+                to="/register"
+              >
+                Sign up
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
