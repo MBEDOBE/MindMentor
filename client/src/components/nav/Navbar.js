@@ -1,10 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Modal from 'react-bootstrap/Modal'; 
+import Button from 'react-bootstrap/Button'
 import './navbar.css';
+import { Context } from "../../context/Context";
 const NavBar = () => {
+  const { user, dispatch } = useContext(Context);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    setShowLogoutModal(true);
+  };
+
+  const confirmLogout = () => {
+    dispatch({ type: 'LOGOUT' });
+    navigate('/');
+    setShowLogoutModal(false);
+  };
+
+  const cancelLogout = () => {
+    setShowLogoutModal(false);
+  };
   return (
     <>
       <Navbar
@@ -33,22 +52,44 @@ const NavBar = () => {
               </Link>
             </Nav>
             <Nav className="gap-4">
-              <Link className="btn btn-primary" to="/logout">
+            {user ? (
+              <button className="btn btn-primary" onClick={handleLogout}>
                 Logout
-              </Link>
+              </button>
+              ) : (
               <Link className="btn btn-primary" to="/login">
                 Login
               </Link>
-              <Link
+              )}
+             {!user && <Link
                 className="btn btn-light text-black btn-sign"
                 to="/register"
               >
                 Sign up
               </Link>
+              } 
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
+      {/* Logout Confirmation Modal */}
+      <Modal show={showLogoutModal} onHide={cancelLogout} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Logout</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to logout?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelLogout}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={confirmLogout}>
+            Logout
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

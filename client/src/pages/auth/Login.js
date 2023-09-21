@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BsFillUnlockFill } from 'react-icons/bs';
 import { MdAlternateEmail } from 'react-icons/md';
 import './auth.css';
@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import { loginRoute } from '../api-routes/APIRoutes';
+import { Context } from '../../context/Context';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,10 +32,11 @@ const Login = () => {
     username: '',
     password: '',
   });
-
+  const { dispatch } = useContext(Context);
   //handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({ type: 'LOGIN_START' });
     if (validateForm()) {
       const { password, username } = values;
       const { data } = await axios.post(loginRoute, {
@@ -44,11 +46,12 @@ const Login = () => {
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
       }
+      dispatch({ type: 'LOGIN_FAILURE' });
       if (data.status === true) {
         localStorage.setItem('mindmentor-user', JSON.stringify(data.user));
         navigate('/');
-        console.log(data)
       }
+      dispatch({ type: 'LOGIN_SUCCESS', payload: data });
     }
   };
 
