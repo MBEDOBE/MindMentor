@@ -1,4 +1,4 @@
-
+import { useContext } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
@@ -12,6 +12,8 @@ import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import Chat from './pages/chat/Chat';
 import MentorProfile from './components/profiles/MentorProfile';
+import Logout from './pages/auth/Logout';
+import { Context } from "./context/Context";
 
 const Layout = () => {
   return (
@@ -63,15 +65,20 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+    path: '/logout',
+    element: <Logout />,
+  },
+  {
     path: '/chat',
     element: <Chat />,
   },
 ]);
 function App() {
-  
+  const { user } = useContext(Context);
   return (
     <div className="app">
       <RouterProvider router={router}>
+       <Layout user={user}/>
       </RouterProvider>
     </div>
   );
