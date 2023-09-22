@@ -6,23 +6,9 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SidebarChat from "./SidebarChat";
-<<<<<<< HEAD
-//import axios from "./axios";
-
-const sidebar = ({ contacts, currentUser }) => {
-  //const [users, setUsers] = useState([]);
-
-  /*useEffect(() => {
-    axios.get("./users/sync").then((response) => {
-      setUsers(response.data);
-    });
-  }, []);*/
-
-=======
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
->>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -48,17 +34,9 @@ const Sidebar = () => {
       <div className="sidebar_chats">
         <SidebarChat addNewChat />
         <SidebarChat />
-<<<<<<< HEAD
-        <SidebarChat />
-=======
->>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
       </div>
     </div>
   );
 };
 
-<<<<<<< HEAD
-export default sidebar;
-=======
 export default Sidebar;
->>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d

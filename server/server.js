@@ -33,11 +33,6 @@ app.get("/", (req, res) => {
 
 //Import/require the API routes/files
 const UsersRoutes = require("./routes/auth.routes");
-<<<<<<< HEAD
-
-// Call/use the API/files
-app.use("/api/auth", UsersRoutes);
-=======
 const ChatRoutes = require("./routes/chat.routes");
 const MessageRoutes = require("./routes/message.routes");
 
@@ -45,7 +40,6 @@ const MessageRoutes = require("./routes/message.routes");
 app.use("/api/auth", UsersRoutes);
 app.use("/chat", ChatRoutes);
 app.use("/message", MessageRoutes);
->>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
 
 // Starting the server
 app.listen(port, () => {
