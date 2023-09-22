@@ -1,21 +1,84 @@
-import React from 'react';
-import {  BsFillUnlockFill } from 'react-icons/bs';
-import { MdAlternateEmail } from 'react-icons/md';
-import { Link } from 'react-router-dom';
-import './auth.css';
+import React, { useState, useEffect } from "react";
+import { BsFillUnlockFill } from "react-icons/bs";
+import { MdAlternateEmail } from "react-icons/md";
+import "./auth.css";
+import { Link, useNavigate } from "react-router-dom";
+import "./auth.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { loginRoute } from "../api-routes/APIRoutes";
+
 const Login = () => {
+  const navigate = useNavigate();
+  //error notification
+  const toastOptions = {
+    position: "top-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
+  //user loggedin redirect
+  useEffect(() => {
+    if (localStorage.getItem("mindmentor-user")) {
+      navigate("/");
+    }
+  }, []);
+
+  const [values, setValues] = useState({
+    username: "",
+    password: "",
+  });
+
+  //handle submit
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      const { password, username } = values;
+      const { data } = await axios.post(loginRoute, {
+        username,
+        password,
+      });
+      if (data.status === false) {
+        toast.error(data.msg, toastOptions);
+      }
+      if (data.status === true) {
+        localStorage.setItem("mindmentor-user", JSON.stringify(data.user));
+        navigate("/");
+      }
+    }
+  };
+
+  //handle change
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  //handle validation
+  const validateForm = () => {
+    const { username, password } = values;
+    if (username === "") {
+      toast.error("Username/Email and Password is required", toastOptions);
+      return false;
+    } else if (password === "") {
+      toast.error("Username/Email and Password is required", toastOptions);
+      return false;
+    }
+    return true;
+  };
+
   return (
     <div className="bg">
       <div className="login-container container ">
         <div className="form-container sm:container-fluid">
-          <form>
-            <Link to="/" className='mb-5'>
-              <img
-                src="./logo192.png"
-                alt="MindMentor Logo"
-                className="mb-3 contrast"
-              />
-              <span>Mind<span className='colored'>Mentor</span></span>
+          <form onSubmit={(e) => handleSubmit(e)}>
+            <Link to="/" className="mb-5">
+              <img src="./logo192.png" alt="MindMentor Logo" className="mb-3" />
+              <span>
+                Mind<span className="colored">Mentor</span>
+              </span>
             </Link>
             <h5 className="top-text text-center mb-4">
               Please Login to your account.
@@ -24,8 +87,11 @@ const Login = () => {
               <MdAlternateEmail />
               <input
                 type="text"
-                className="form-control"
+                className="form-control auth-input"
                 placeholder="Enter username"
+                name="username"
+                onChange={(e) => handleChange(e)}
+                min="3"
                 required
               />
             </div>
@@ -33,8 +99,10 @@ const Login = () => {
               <BsFillUnlockFill />
               <input
                 type="password"
-                className="form-control input-field"
+                className="form-control auth-input"
                 placeholder="Enter password"
+                name="password"
+                onChange={(e) => handleChange(e)}
                 required
               />
             </div>
@@ -65,6 +133,7 @@ const Login = () => {
               Don't have an account? <Link to="/register">Register</Link>
             </p>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>

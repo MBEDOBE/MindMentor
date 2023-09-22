@@ -1,0 +1,22 @@
+:root {
+  --bg-color: #f1c6b8;
+  --white: #ffffff;
+  --primary: #235542;
+  --text-color: #fefefe;
+  --gray: #333333;
+}
+
+.btn-primary {
+  background-color: var(--bg-color) !important;
+  border: none !important;
+  color: var(--gray) !important;
+  font-size: 1.025em !important;
+}
+.page-link {
+  color: var(--gray) !important;
+}
+.active > .page-link {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--white) !important;
+}
