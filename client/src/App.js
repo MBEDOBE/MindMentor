@@ -9,9 +9,12 @@ import "./App.css";
 import ProfilePage from "./pages/profile/Profile";
 import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
+<<<<<<< HEAD
 import Chat from "./pages/chat/Chat";
 import MentorProfile from './components/profiles/MentorProfile';
 
+=======
+>>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
 
 const Layout = () => {
   return (
@@ -48,10 +51,13 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+<<<<<<< HEAD
       {
         path: "/mentor",
         element: <MentorProfile />,
       },
+=======
+>>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
     ],
   },
   {

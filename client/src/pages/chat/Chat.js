@@ -2,6 +2,7 @@ import "./chat.css";
 import Sidebar from "./Sidebar";
 import Chatbody from "./Chatbody";
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
 //import Pusher from "pusher-js";
 //import axios from "./axios";
@@ -33,6 +34,14 @@ const Chat = () => {
   console.log(messages);
 */
 
+=======
+import { useNavigate, userDetails } from "react-router-dom";
+//import Pusher from "pusher-js";
+import axios from "axios";
+import { UserRoute, allUsersRoute } from "../api-routes/APIRoutes";
+
+const Chat = () => {
+>>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
   return (
     <div className="chat">
       <div className="chat_body">

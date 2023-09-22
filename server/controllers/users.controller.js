@@ -40,6 +40,22 @@ module.exports.login = async (req, res, next) => {
   }
 };
 
+<<<<<<< HEAD
+=======
+module.exports.getUser = async (req, res, next) => {
+  try {
+    const users = await User.find({ _id: { $in: req.params.id } }).select([
+      "email",
+      "username",
+      "_id",
+    ]);
+    return res.json(users);
+  } catch (ex) {
+    next(ex);
+  }
+};
+
+>>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
 module.exports.getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find({ _id: { $ne: req.params.id } }).select([

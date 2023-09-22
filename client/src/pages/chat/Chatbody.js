@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
 import "./Chatbody.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
@@ -6,6 +10,7 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
+<<<<<<< HEAD
 //import axios from "./axios";
 
 function Chat({ messages }) {
@@ -23,12 +28,23 @@ function Chat({ messages }) {
     setInput("");
   };*/
 
+=======
+//import axios from "axios";
+
+function Chat() {
+  const [input, setInput] = useState("");
+
+>>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
   return (
     <div className="chatbody">
       <div className="chatbody_header">
         <Avatar />
         <div className="chatbody_headerInfo">
+<<<<<<< HEAD
           <h3>User name</h3>
+=======
+          <h3>CurentUser username</h3>
+>>>>>>> 78b5e290ff1856087f834c56774545888a03cf8d
           <p>Last seen at...</p>
         </div>
         <div className="chatbody_headerRight">
