@@ -24,11 +24,11 @@ const Register = () => {
   };
 
   //user loggedin reirect
-  /* useEffect(() => {
+  useEffect(() => {
     if (localStorage.getItem("mindmentor-user")) {
       navigate("/");
     }
-  }, []);*/
+  }, []);
 
   const [values, setValues] = useState({
     fullname: "",

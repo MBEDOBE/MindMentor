@@ -15,7 +15,7 @@ function SidebarChat({ addNewChat }) {
     <div className="sidebarChat">
       <Avatar />
       <div className="sidebarChat_info">
-        <h2>User Name</h2>
+        <h2>Other Users</h2>
         <p>This is the last message</p>
       </div>
     </div>

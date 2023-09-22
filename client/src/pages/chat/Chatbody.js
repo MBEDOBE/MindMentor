@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Chatbody.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
@@ -6,29 +6,17 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
-//import axios from "./axios";
+//import axios from "axios";
 
-function Chat({ messages }) {
+function Chat() {
   const [input, setInput] = useState("");
-
-  /*const sendMessage = async (e) => {
-    e.preventDefault();
-    await axios.post("/messages/new", {
-      message: input, 
-      name: "DEMO",
-      timestamp: "Just now",
-      recieved: false,
-    });
-
-    setInput("");
-  };*/
 
   return (
     <div className="chatbody">
       <div className="chatbody_header">
         <Avatar />
         <div className="chatbody_headerInfo">
-          <h3>User name</h3>
+          <h3>CurentUser username</h3>
           <p>Last seen at...</p>
         </div>
         <div className="chatbody_headerRight">
