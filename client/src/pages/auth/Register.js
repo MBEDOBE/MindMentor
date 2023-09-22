@@ -54,7 +54,8 @@ const Register = () => {
       }
       if (data.status === true) {
         localStorage.setItem("mindmentor-user", JSON.stringify(data.user));
-        navigate("/");
+        navigate("/login");
+        console.log(data)
       }
     }
   };
