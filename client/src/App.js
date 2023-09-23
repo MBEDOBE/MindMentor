@@ -12,7 +12,6 @@ import Contact from "./pages/contact/Contact";
 import Chat from "./pages/chat/Chat";
 import MentorProfile from "./components/profiles/MentorProfile";
 import { useContext } from 'react';
-import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import Logout from './pages/auth/Logout';
 import { Context } from "./context/Context";
 
