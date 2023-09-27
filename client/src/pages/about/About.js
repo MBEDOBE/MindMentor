@@ -236,7 +236,7 @@ const About = () => {
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="card position-relative aboutservice-card">
                 <img
-                  src="mentor1.jpg"
+                  src="/services/mentorship.jpeg"
                   className="card-img-top"
                   alt="A Mentor"
                 />
@@ -257,7 +257,7 @@ const About = () => {
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="card position-relative aboutservice-card">
                 <img
-                  src="mentor1.jpg"
+                  src="/services/counselling.jpeg"
                   className="card-img-top"
                   alt="A Mentor"
                 />
@@ -280,7 +280,7 @@ const About = () => {
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="card position-relative aboutservice-card">
                 <img
-                  src="mentor1.jpg"
+                  src="/services/library.jpeg"
                   className="card-img-top"
                   alt="A Mentor"
                 />
@@ -303,7 +303,7 @@ const About = () => {
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="card position-relative aboutservice-card">
                 <img
-                  src="mentor1.jpg"
+                  src="/services/community.jpeg"
                   className="card-img-top"
                   alt="A Mentor"
                 />
@@ -326,7 +326,7 @@ const About = () => {
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="card position-relative aboutservice-card">
                 <img
-                  src="mentor1.jpg"
+                  src="/services/professional.jpeg"
                   className="card-img-top"
                   alt="A Mentor"
                 />
@@ -349,7 +349,7 @@ const About = () => {
             <div className="col-lg-4 col-md-6 mb-4">
               <div className="card position-relative aboutservice-card">
                 <img
-                  src="mentor1.jpg"
+                  src="/services/access.jpeg"
                   className="card-img-top"
                   alt="A Mentor"
                 />

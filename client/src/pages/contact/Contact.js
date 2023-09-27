@@ -6,10 +6,10 @@ import './contact.css';
 const Contact = () => {
   return (
     <>
-      <div className="container">
-        <div className="card mb-3 shadow-lg">
+      <div className="container flex-md-column">
+        <div className="card mb-4 shadow-lg">
           <div className="card-body">
-            <div className="row">
+            <div className="row d-md-flex ">
               <div className="col-md-8">
                 <h2>Contact Us</h2>
                 <form>
@@ -53,16 +53,16 @@ const Contact = () => {
                   </div>
                 </form>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4 mt-4">
                 <img src="./mentor1.jpg" alt="Contact" className="img-fluid" />
               </div>
             </div>
-            <div className="row my-5">
-              <div className="col-md-4">
+            <div className="row m-5 ">
+              <div className="col-md-6 ">
                 <div className="mb-3">
                   <h5>Address</h5>
                   <div className="contact-elements">
-                    <FaLocationDot size={60} color="#235542" />
+                    <FaLocationDot size={40} color="#235542" />
                     <div className="address">
                       <p>123 Main Street</p>
                       <p>Wakanda, VK</p>
@@ -70,22 +70,22 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-md-4">
+              {/* <div className="col-md-4">
                 <div className="mb-3">
-                  <h5>Email</h5>
+                  <h6>Email</h6>
                   <div className="contact-elements">
-                    <MdAlternateEmail size={60} color="#235542" />
+                    <MdAlternateEmail size={40} color="#235542" />
                     <div className="my-auto ms-3">
                       <p>mindmentor@wakanda.com</p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-md-4">
+              </div> */}
+              <div className="col-md-6">
                 <div className="mb-3">
                   <h5>Phone</h5>
                   <div className="contact-elements">
-                    <FaPhoneAlt size={60} color="#235542" />
+                    <FaPhoneAlt size={40} color="#235542" />
                     <div className="address ms-3">
                       <p>123 Main Street</p>
                       <p>Wakanda, VK</p>

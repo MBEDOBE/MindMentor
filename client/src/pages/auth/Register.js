@@ -26,7 +26,7 @@ const Register = () => {
   //user loggedin reirect
   useEffect(() => {
     if (localStorage.getItem("mindmentor-user")) {
-      navigate("/");
+      navigate("/register");
     }
   }, []);
 

@@ -15,33 +15,34 @@ const ProfileUpdate = () => {
               <div className="col-sm-9 text-secondary">Pitch Dark</div>
             </div>
             <hr />
-
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Username</h6>
+            <form action="">
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Username</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">PiDa</div>
               </div>
-              <div className="col-sm-9 text-secondary">PiDa</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Email</h6>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Email</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">pida@viking.vk</div>
               </div>
-              <div className="col-sm-9 text-secondary">pida@viking.vk</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Password</h6>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Password</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">************</div>
               </div>
-              <div className="col-sm-9 text-secondary">************</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-12">
-                <Link className="btn btn-primary ">Edit</Link>
+              <hr />
+              <div className="row">
+                <div className="col-sm-12">
+                  <Link className="btn btn-primary ">Edit</Link>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
@@ -81,98 +82,90 @@ const ProfileUpdate = () => {
       </div>
 
       <div className="container my-5">
-      <h1>Recommended</h1>
-            <div className="row mt-4">
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
+        <h1>Recommended</h1>
+        <div className="row mt-4">
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: '18rem' }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
-                  </div>
-                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
               </div>
             </div>
           </div>
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: '18rem' }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
+                  </div>
+                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: '18rem' }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
+                  </div>
+                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: '18rem' }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
+                  </div>
+                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
