@@ -1,7 +1,9 @@
-.contact-elements{
+.contact-elements {
   display: flex;
   padding-top: 10px;
-
 }
-.address{
+@media (width: 840px) {
+  .contact-details {
+    display: grid !important;
+  }
 }
