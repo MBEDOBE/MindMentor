@@ -1,42 +1,42 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { BsFillUnlockFill } from 'react-icons/bs';
-import { MdAlternateEmail } from 'react-icons/md';
-import './auth.css';
-import { Link, useNavigate } from 'react-router-dom';
-import './auth.css';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import axios from 'axios';
-import { loginRoute } from '../api-routes/APIRoutes';
-import { Context } from '../../context/Context';
+import React, { useState, useEffect, useContext } from "react";
+import { BsFillUnlockFill } from "react-icons/bs";
+import { MdAlternateEmail } from "react-icons/md";
+import "./auth.css";
+import { Link, useNavigate } from "react-router-dom";
+import "./auth.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import { loginRoute } from "../api-routes/APIRoutes";
+import { Context } from "../../context/Context";
 
 const Login = () => {
   const navigate = useNavigate();
   //error notification
   const toastOptions = {
-    position: 'top-right',
+    position: "top-right",
     autoClose: 8000,
     pauseOnHover: true,
     draggable: true,
-    theme: 'dark',
+    theme: "dark",
   };
 
   //user loggedin redirect
   useEffect(() => {
-    if (localStorage.getItem('mindmentor-user')) {
-      navigate('/login');
+    if (localStorage.getItem("mindmentor-user")) {
+      navigate("/");
     }
   }, []);
 
   const [values, setValues] = useState({
-    username: '',
-    password: '',
+    username: "",
+    password: "",
   });
   const { dispatch } = useContext(Context);
   //handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: 'LOGIN_START' });
+    dispatch({ type: "LOGIN_START" });
     if (validateForm()) {
       const { password, username } = values;
       const { data } = await axios.post(loginRoute, {
@@ -46,12 +46,12 @@ const Login = () => {
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
       }
-      dispatch({ type: 'LOGIN_FAILURE' });
+      dispatch({ type: "LOGIN_FAILURE" });
       if (data.status === true) {
-        localStorage.setItem('mindmentor-user', JSON.stringify(data.user));
-        navigate('/');
+        localStorage.setItem("mindmentor-user", JSON.stringify(data.user));
+        navigate("/");
       }
-      dispatch({ type: 'LOGIN_SUCCESS', payload: data });
+      dispatch({ type: "LOGIN_SUCCESS", payload: data });
     }
   };
 
@@ -63,11 +63,11 @@ const Login = () => {
   //handle validation
   const validateForm = () => {
     const { username, password } = values;
-    if (username === '') {
-      toast.error('Username/Email and Password is required', toastOptions);
+    if (username === "") {
+      toast.error("Username/Email and Password is required", toastOptions);
       return false;
-    } else if (password === '') {
-      toast.error('Username/Email and Password is required', toastOptions);
+    } else if (password === "") {
+      toast.error("Username/Email and Password is required", toastOptions);
       return false;
     }
     return true;
