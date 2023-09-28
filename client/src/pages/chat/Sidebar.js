@@ -7,8 +7,45 @@ import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SidebarChat from "./SidebarChat";
 import { useNavigate } from "react-router-dom";
+import Axios from "axios";
+import { userChatRoute, userRoute } from "../api-routes/APIRoutes";
 
 const Sidebar = () => {
+  const [chats, setChats] = useState([]);
+  const [user, setUser] = useState("");
+  const [user_id, setUser_id] = useState("");
+
+  useEffect(() => {
+    const currentUser = localStorage.getItem("mindmentor-user");
+
+    if (currentUser) {
+      // currentUser is a string in this case; you may want to parse it if it's stored as JSON
+      // Example parsing JSON:
+      const currentUserObjects = JSON.parse(currentUser);
+
+      // Accessing the username property
+      const getUserDetails = currentUserObjects;
+      const getUser_id = currentUserObjects._id;
+
+      // Seting the username in the component's state
+      setUser(getUserDetails);
+      setUser_id(getUser_id);
+    }
+  }, []);
+
+  useEffect(() => {
+    const getChats = async () => {
+      try {
+        const { data } = await Axios.get(`${userChatRoute}/${user_id}`);
+        setChats(data);
+        console.log(data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getChats();
+  }, [user]);
+
   return (
     <div className="sidebar">
       <div className="sidebar_header">

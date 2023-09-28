@@ -8,6 +8,13 @@ import axios from "axios";
 import { UserRoute, allUsersRoute } from "../api-routes/APIRoutes";
 
 const Chat = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("mindmentor-user")) {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <div className="chat">
       <div className="chat_body">

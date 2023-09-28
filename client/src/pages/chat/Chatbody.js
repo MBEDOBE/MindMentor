@@ -10,13 +10,34 @@ import MicIcon from "@mui/icons-material/Mic";
 
 function Chat() {
   const [input, setInput] = useState("");
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const currentUser = localStorage.getItem("mindmentor-user");
+
+    if (currentUser) {
+      try {
+        // Parse the currentUser string as JSON
+        const currentUserObjects = JSON.parse(currentUser);
+
+        // Accessing the username property
+        const getUsername = currentUserObjects.username;
+
+        // Seting the username in the component's state
+        setUsername(getUsername);
+      } catch (e) {
+        // Handle any parsing errors if the data is not valid JSON
+        console.e("Error parsing this data:", e);
+      }
+    }
+  }, []);
 
   return (
     <div className="chatbody">
       <div className="chatbody_header">
         <Avatar />
         <div className="chatbody_headerInfo">
-          <h3>CurentUser username</h3>
+          <h3>{username}</h3>
           <p>Last seen at...</p>
         </div>
         <div className="chatbody_headerRight">
