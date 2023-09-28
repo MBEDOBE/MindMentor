@@ -1,8 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 
 const ProfileUpdate = () => {
+  const [username, setUsername] = useState("");
+  const [fullName, setfullName] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const currentUser = localStorage.getItem("mindmentor-user");
+
+    if (currentUser) {
+      try {
+        // Parse the currentUser string as JSON
+        const currentUserObjects = JSON.parse(currentUser);
+
+        // Accessing the username property
+        const getUsername = currentUserObjects.username;
+        const getFullname = currentUserObjects.fullname;
+        const getEmail = currentUserObjects.email;
+
+        // Seting the username in the component's state
+        setUsername(getUsername);
+        setfullName(getFullname);
+        setEmail(getEmail);
+      } catch (e) {
+        // Handle any parsing errors if the data is not valid JSON
+        console.e("Error parsing this data:", e);
+      }
+    }
+  }, []);
+
   return (
     <>
       <div className="col-md-8">
@@ -12,7 +40,7 @@ const ProfileUpdate = () => {
               <div className="col-sm-3">
                 <h6 className="mb-0">Full Name</h6>
               </div>
-              <div className="col-sm-9 text-secondary">Pitch Dark</div>
+              <div className="col-sm-9 text-secondary">{fullName}</div>
             </div>
             <hr />
 
@@ -20,14 +48,14 @@ const ProfileUpdate = () => {
               <div className="col-sm-3">
                 <h6 className="mb-0">Username</h6>
               </div>
-              <div className="col-sm-9 text-secondary">PiDa</div>
+              <div className="col-sm-9 text-secondary">{username}</div>
             </div>
             <hr />
             <div className="row">
               <div className="col-sm-3">
                 <h6 className="mb-0">Email</h6>
               </div>
-              <div className="col-sm-9 text-secondary">pida@viking.vk</div>
+              <div className="col-sm-9 text-secondary">{email}</div>
             </div>
             <hr />
             <div className="row">
@@ -81,98 +109,90 @@ const ProfileUpdate = () => {
       </div>
 
       <div className="container my-5">
-      <h1>Recommended</h1>
-            <div className="row mt-4">
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
+        <h1>Recommended</h1>
+        <div className="row mt-4">
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: "18rem" }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
                   </div>
                 </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-3 col-sm-6 mb-4">
-                <div className="card profile" style={{ width: '18rem' }}>
-                  <img src="./mentor1.jpg" className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Pitch Dark</h5>
-                    <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
-                    <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
-                      <div>
-                        <p className="small text-muted mb-1">Category</p>
-                        <p className="mb-0">Mentor</p>
-                      </div>
-                      <div className="px-3">
-                        <p className="small text-muted mb-1">Status</p>
-                        <p className="mb-0">Available</p>
-                      </div>
-                    </div>
-                    <Link className="btn btn-primary profile-btn">
-                      Book Now
-                    </Link>
-                  </div>
-                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
               </div>
             </div>
           </div>
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: "18rem" }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
+                  </div>
+                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: "18rem" }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
+                  </div>
+                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-3 col-sm-6 mb-4">
+            <div className="card profile" style={{ width: "18rem" }}>
+              <img src="./mentor1.jpg" className="card-img-top" alt="..." />
+              <div className="card-body">
+                <h5 className="card-title">Pitch Dark</h5>
+                <p className="mb-2 pb-1 user-prof">Senior Journalist</p>
+                <div className="d-flex justify-content-between rounded-3 p-2 mb-2 inner-content">
+                  <div>
+                    <p className="small text-muted mb-1">Category</p>
+                    <p className="mb-0">Mentor</p>
+                  </div>
+                  <div className="px-3">
+                    <p className="small text-muted mb-1">Status</p>
+                    <p className="mb-0">Available</p>
+                  </div>
+                </div>
+                <Link className="btn btn-primary profile-btn">Book Now</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
