@@ -6,6 +6,7 @@ const ProfileUpdate = () => {
   const [username, setUsername] = useState("");
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
+  const [userId, setUserId] = useState(undefined);
 
   useEffect(() => {
     const currentUser = localStorage.getItem("mindmentor-user");
@@ -19,11 +20,13 @@ const ProfileUpdate = () => {
         const getUsername = currentUserObjects.username;
         const getFullname = currentUserObjects.fullname;
         const getEmail = currentUserObjects.email;
+        const getId = currentUserObjects._id;
 
         // Seting the username in the component's state
         setUsername(getUsername);
         setfullName(getFullname);
         setEmail(getEmail);
+        setUserId(getId);
       } catch (e) {
         // Handle any parsing errors if the data is not valid JSON
         console.e("Error parsing this data:", e);
@@ -43,7 +46,6 @@ const ProfileUpdate = () => {
               <div className="col-sm-9 text-secondary">{fullName}</div>
             </div>
             <hr />
-
             <div className="row">
               <div className="col-sm-3">
                 <h6 className="mb-0">Username</h6>
@@ -60,6 +62,22 @@ const ProfileUpdate = () => {
             <hr />
             <div className="row">
               <div className="col-sm-3">
+                <h6 className="mb-0">Profession</h6>
+              </div>
+              <div className="col-sm-9 text-secondary">
+                Full Stack Developer
+              </div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
+                <h6 className="mb-0">State/Country</h6>
+              </div>
+              <div className="col-sm-9 text-secondary">Lagos, Nigeria</div>
+            </div>
+            <hr />
+            <div className="row">
+              <div className="col-sm-3">
                 <h6 className="mb-0">Password</h6>
               </div>
               <div className="col-sm-9 text-secondary">************</div>
@@ -67,7 +85,10 @@ const ProfileUpdate = () => {
             <hr />
             <div className="row">
               <div className="col-sm-12">
-                <Link className="btn btn-primary ">Edit</Link>
+                <Link to="/accountsettings" className="btn btn-primary ">
+                  Edit
+                </Link>
+                <button className="btn btn-danger ms-2 ">Delete</button>
               </div>
             </div>
           </div>

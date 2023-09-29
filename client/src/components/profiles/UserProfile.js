@@ -38,7 +38,7 @@ const UserProfile = () => {
             <div className="mt-3">
               <h4>{fullName}</h4>
               <p className="text-secondary mb-1">Full Stack Developer</p>
-              <p className="text-muted font-size-sm">Wakanda, VK</p>
+              <p className="text-muted font-size-sm">Lagos, Nigeria</p>
             </div>
           </div>
         </div>

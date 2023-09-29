@@ -11,8 +11,9 @@ import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import Chat from "./pages/chat/Chat";
 import MentorProfile from "./components/profiles/MentorProfile";
-import { useContext } from 'react';
-import Logout from './pages/auth/Logout';
+import ProfileEdit from "./components/profiles/ProfileEdit";
+import { useContext } from "react";
+import Logout from "./pages/auth/Logout";
 import { Context } from "./context/Context";
 
 const Layout = () => {
@@ -27,49 +28,53 @@ const Layout = () => {
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Landing />,
       },
       {
-        path: '/resources',
+        path: "/resources",
         element: <Resources />,
       },
       {
-        path: '/profile',
+        path: "/profile",
         element: <ProfilePage />,
       },
       {
-        path: '/about',
+        path: "/accountsettings/",
+        element: <ProfileEdit />,
+      },
+      {
+        path: "/about",
         element: <About />,
       },
       {
-        path: '/contact',
+        path: "/contact",
         element: <Contact />,
       },
       {
-        path: '/mentor',
+        path: "/mentor",
         element: <MentorProfile />,
       },
     ],
   },
   {
-    path: '/register',
+    path: "/register",
     element: <Register />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login />,
   },
   {
-    path: '/logout',
+    path: "/logout",
     element: <Logout />,
   },
   {
-    path: '/chat',
+    path: "/chat",
     element: <Chat />,
   },
 ]);
@@ -78,7 +83,7 @@ function App() {
   return (
     <div className="app">
       <RouterProvider router={router}>
-       <Layout user={user}/>
+        <Layout user={user} />
       </RouterProvider>
     </div>
   );
