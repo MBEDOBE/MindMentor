@@ -23,12 +23,14 @@ const Register = () => {
     theme: "dark",
   };
 
-  //user loggedin reirect
+  {
+    /*//user loggedin reirect
   useEffect(() => {
     if (localStorage.getItem("mindmentor-user")) {
       navigate("/");
     }
-  }, []);
+  }, []);*/
+  }
 
   const [values, setValues] = useState({
     fullname: "",
@@ -55,7 +57,6 @@ const Register = () => {
       if (data.status === true) {
         localStorage.setItem("mindmentor-user", JSON.stringify(data.user));
         navigate("/login");
-        console.log(data)
       }
     }
   };

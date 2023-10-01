@@ -1,11 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import { accountSettingsRoute } from "../../pages/api-routes/APIRoutes";
 
 const ProfileUpdate = () => {
-  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  //error notification
+  const toastOptions = {
+    position: "top-right",
+    autoClose: 8000,
+    pauseOnHover: true,
+    draggable: true,
+    theme: "dark",
+  };
+
+  //user loggedin redirect
+  useEffect(() => {
+    if (!localStorage.getItem("mindmentor-user")) {
+      navigate("/login");
+    }
+  }, []);
+
+  //Current User details
+  const [userName, setUsername] = useState("");
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
+  const [profession, setProfession] = useState("");
+  const [location, setLocation] = useState("");
   const [userId, setUserId] = useState(undefined);
 
   useEffect(() => {
@@ -20,12 +44,16 @@ const ProfileUpdate = () => {
         const getUsername = currentUserObjects.username;
         const getFullname = currentUserObjects.fullname;
         const getEmail = currentUserObjects.email;
+        const getProfession = currentUserObjects.profession;
+        const getLocation = currentUserObjects.state_country;
         const getId = currentUserObjects._id;
 
-        // Seting the username in the component's state
+        // Setting the username in the component's state
         setUsername(getUsername);
         setfullName(getFullname);
         setEmail(getEmail);
+        setProfession(getProfession);
+        setLocation(getLocation);
         setUserId(getId);
       } catch (e) {
         // Handle any parsing errors if the data is not valid JSON
@@ -34,63 +62,285 @@ const ProfileUpdate = () => {
     }
   }, []);
 
+  const [editMode, setEditMode] = useState(false);
+
+  // Initialize state variables for updated user data
+  const [updatedFullName, setUpdatedFullName] = useState("");
+  const [updatedUsername, setUpdatedUsername] = useState("");
+  const [updatedEmail, setUpdatedEmail] = useState("");
+  const [updatedProfession, setUpdatedProfession] = useState("");
+  const [updatedLocation, setUpdatedLocation] = useState("");
+  const [updatedPassword, setUpdatedPassword] = useState("");
+
+  const handleToggleEdit = () => {
+    setEditMode(!editMode);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (handleValidation) {
+      const updatedUserData = {
+        fullname: updatedFullName,
+        username: updatedUsername,
+        email: updatedEmail,
+        profession: updatedProfession,
+        state_country: updatedLocation,
+        password: updatedPassword,
+      };
+
+      // Send a PUT request to update user information
+      const { data } = await axios.put(
+        accountSettingsRoute + userId,
+        updatedUserData
+      );
+      if (data.status === false) {
+        toast.error(data.msg, toastOptions);
+      } else if (data.status === true) {
+        // Update the local user data and exit edit mode
+        localStorage.setItem("mindmentor-user", JSON.stringify(data.user));
+        setEditMode(false);
+
+        // Refresh the page
+        window.location.reload();
+      }
+    }
+  };
+
+  //Delete Profile Function
+
+  const handleDelete = async () => {
+    // Show a confirmation dialog to confirm the delete action
+    const confirmation = window.confirm(
+      "Are you sure you want to delete your profile? This action cannot be undone."
+    );
+
+    if (confirmation) {
+      try {
+        // Send a DELETE request to delete the user's profile
+        const { data } = await axios.delete(accountSettingsRoute + userId);
+
+        if (data.status === false) {
+          toast.error(data.msg, toastOptions);
+        } else if (data.status === true) {
+          // Delete was successful, log the user out and redirect to the login page
+          localStorage.removeItem("mindmentor-user");
+          navigate.push("/login");
+        }
+      } catch (error) {
+        console.error("Error deleting user profile:", error);
+        toast.error(
+          "An error occurred while deleting your profile. Please try again later.",
+          toastOptions
+        );
+      }
+    }
+  };
+
+  //handle validation
+  const handleValidation = () => {
+    const { password, username, email, fullname, profession, state_country } =
+      value;
+    if (username.length < 3) {
+      toast.error(
+        "Username should be greater than 3 characters.",
+        toastOptions
+      );
+      return false;
+    } else if (password.length < 8) {
+      toast.error(
+        "Password should be equal or greater than 8 characters.",
+        toastOptions
+      );
+      return false;
+    } else if (email === "") {
+      toast.error("Email is required.", toastOptions);
+      return false;
+    } else if (profession === "") {
+      toast.error("What you do is required.", toastOptions);
+      return false;
+    } else if (state_country === "") {
+      toast.error("Your present state and country is required.", toastOptions);
+      return false;
+    } else if (fullname.length < 6) {
+      toast.error(
+        "Fullname should be greater than 6 characters.",
+        toastOptions
+      );
+      return false;
+    }
+
+    return true;
+  };
+
   return (
     <>
       <div className="col-md-8">
         <div className="card mb-3">
           <div className="card-body">
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Full Name</h6>
+            <form onSubmit={(e) => handleSubmit(e)}>
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Full Name</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {editMode ? (
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={fullName}
+                      name="fullname"
+                      value={updatedFullName}
+                      onChange={(e) => setUpdatedFullName(e.target.value)}
+                    />
+                  ) : (
+                    fullName
+                  )}
+                </div>
               </div>
-              <div className="col-sm-9 text-secondary">{fullName}</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Username</h6>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Username</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {editMode ? (
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={userName}
+                      name="username"
+                      value={updatedUsername}
+                      onChange={(e) => setUpdatedUsername(e.target.value)}
+                    />
+                  ) : (
+                    userName
+                  )}
+                </div>
               </div>
-              <div className="col-sm-9 text-secondary">{username}</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Email</h6>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Email</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {editMode ? (
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={email}
+                      name="email"
+                      value={updatedEmail}
+                      onChange={(e) => setUpdatedEmail(e.target.value)}
+                    />
+                  ) : (
+                    email
+                  )}
+                </div>
               </div>
-              <div className="col-sm-9 text-secondary">{email}</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Profession</h6>
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">Profession</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {editMode ? (
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={profession}
+                      name="profession"
+                      value={updatedProfession}
+                      onChange={(e) => setUpdatedProfession(e.target.value)}
+                    />
+                  ) : (
+                    profession
+                  )}
+                </div>
               </div>
-              <div className="col-sm-9 text-secondary">
-                Full Stack Developer
+              <hr />
+              <div className="row">
+                <div className="col-sm-3">
+                  <h6 className="mb-0">State/Country</h6>
+                </div>
+                <div className="col-sm-9 text-secondary">
+                  {editMode ? (
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={location}
+                      name="location"
+                      value={updatedLocation}
+                      onChange={(e) => setUpdatedLocation(e.target.value)}
+                    />
+                  ) : (
+                    location
+                  )}
+                </div>
               </div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">State/Country</h6>
+              <hr />
+              {editMode ? (
+                <div className="row">
+                  <div className="col-sm-3">
+                    <h6 className="mb-0"> New Password</h6>
+                  </div>
+                  <div className="col-sm-9 text-secondary">
+                    {editMode ? (
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="********"
+                        name="password"
+                        value={updatedPassword}
+                        onChange={(e) => setUpdatedPassword(e.target.value)}
+                      />
+                    ) : (
+                      "*********"
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="row">
+                  <div className="col-sm-3">
+                    <h6 className="mb-0">Password</h6>
+                  </div>
+                  <div className="col-sm-9 text-secondary">********</div>
+                </div>
+              )}
+              <hr />
+              <div className="row">
+                <div className="col-sm-12">
+                  {editMode ? (
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={handleToggleEdit}
+                    >
+                      Cancel
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={handleToggleEdit}
+                    >
+                      Edit Profile
+                    </button>
+                  )}
+                  {editMode ? (
+                    <button type="submit" className="btn btn-primary ms-2">
+                      Update
+                    </button>
+                  ) : (
+                    <button
+                      className="btn btn-danger ms-2 "
+                      onClick={handleDelete}
+                    >
+                      Delete
+                    </button>
+                  )}
+                </div>
               </div>
-              <div className="col-sm-9 text-secondary">Lagos, Nigeria</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Password</h6>
-              </div>
-              <div className="col-sm-9 text-secondary">************</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-12">
-                <Link to="/accountsettings" className="btn btn-primary ">
-                  Edit
-                </Link>
-                <button className="btn btn-danger ms-2 ">Delete</button>
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

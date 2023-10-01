@@ -21,12 +21,14 @@ const Login = () => {
     theme: "dark",
   };
 
-  //user loggedin redirect
+  {
+    /*//user loggedin redirect
   useEffect(() => {
     if (localStorage.getItem("mindmentor-user")) {
       navigate("/");
     }
-  }, []);
+  }, []);*/
+  }
 
   const [values, setValues] = useState({
     username: "",

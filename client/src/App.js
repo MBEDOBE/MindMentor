@@ -11,7 +11,6 @@ import About from "./pages/about/About";
 import Contact from "./pages/contact/Contact";
 import Chat from "./pages/chat/Chat";
 import MentorProfile from "./components/profiles/MentorProfile";
-import ProfileEdit from "./components/profiles/ProfileEdit";
 import { useContext } from "react";
 import Logout from "./pages/auth/Logout";
 import { Context } from "./context/Context";
@@ -42,10 +41,6 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProfilePage />,
-      },
-      {
-        path: "/accountsettings/",
-        element: <ProfileEdit />,
       },
       {
         path: "/about",
