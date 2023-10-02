@@ -3,7 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { accountSettingsRoute } from "../../pages/api-routes/APIRoutes";
+import {
+  accountSettingsRoute,
+  accountDeleteRoute,
+} from "../../pages/api-routes/APIRoutes";
 
 const ProfileUpdate = () => {
   const navigate = useNavigate();
@@ -16,13 +19,6 @@ const ProfileUpdate = () => {
     draggable: true,
     theme: "dark",
   };
-
-  //user loggedin redirect
-  useEffect(() => {
-    if (!localStorage.getItem("mindmentor-user")) {
-      navigate("/login");
-    }
-  }, []);
 
   //Current User details
   const [userName, setUsername] = useState("");
@@ -117,14 +113,14 @@ const ProfileUpdate = () => {
     if (confirmation) {
       try {
         // Send a DELETE request to delete the user's profile
-        const { data } = await axios.delete(accountSettingsRoute + userId);
+        const { data } = await axios.delete(accountDeleteRoute + userId);
 
         if (data.status === false) {
           toast.error(data.msg, toastOptions);
         } else if (data.status === true) {
           // Delete was successful, log the user out and redirect to the login page
           localStorage.removeItem("mindmentor-user");
-          navigate.push("/login");
+          navigate("/register");
         }
       } catch (error) {
         console.error("Error deleting user profile:", error);
@@ -177,7 +173,7 @@ const ProfileUpdate = () => {
       <div className="col-md-8">
         <div className="card mb-3">
           <div className="card-body">
-            <form onSubmit={(e) => handleSubmit(e)}>
+            <form>
               <div className="row">
                 <div className="col-sm-3">
                   <h6 className="mb-0">Full Name</h6>
@@ -327,7 +323,10 @@ const ProfileUpdate = () => {
                     </button>
                   )}
                   {editMode ? (
-                    <button type="submit" className="btn btn-primary ms-2">
+                    <button
+                      className="btn btn-primary ms-2"
+                      onClick={handleSubmit}
+                    >
                       Update
                     </button>
                   ) : (

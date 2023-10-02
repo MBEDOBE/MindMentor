@@ -123,3 +123,19 @@ module.exports.accountSettings = async (req, res, next) => {
     next(ex);
   }
 };
+
+module.exports.accountDelete = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+    // Find the user by ID and remove them from the database
+    const accountDelete = await User.findByIdAndRemove(userId);
+
+    if (!accountDelete) {
+      return res.status(404).json({ status: false, msg: "User not found" });
+    }
+
+    return res.json({ status: true, msg: "User deleted successfully" });
+  } catch (ex) {
+    next(ex);
+  }
+};

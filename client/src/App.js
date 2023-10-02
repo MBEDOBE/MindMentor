@@ -74,11 +74,11 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  const { user } = useContext(Context);
+  const { User } = useContext(Context);
   return (
     <div className="app">
       <RouterProvider router={router}>
-        <Layout user={user} />
+        <Layout User={User} />
       </RouterProvider>
     </div>
   );
