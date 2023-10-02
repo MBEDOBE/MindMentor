@@ -1,12 +1,13 @@
-import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import './navbar.css';
-import { Context } from '../../context/Context';
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+import "./navbar.css";
+import { Context } from "../../context/Context";
+
 const NavBar = () => {
   const { user, dispatch } = useContext(Context);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -16,8 +17,8 @@ const NavBar = () => {
   };
 
   const confirmLogout = () => {
-    dispatch({ type: 'LOGOUT' });
-    navigate('/');
+    dispatch({ type: "LOGOUT" });
+    navigate("/");
     setShowLogoutModal(false);
   };
 
@@ -53,7 +54,7 @@ const NavBar = () => {
             </Nav>
             <Nav className="gap-4">
               {user ? (
-                <div className="d-flex gap-4">
+               <div className="d-flex gap-4">
                   <button className="btn btn-primary" onClick={handleLogout}>
                     Logout
                   </button>

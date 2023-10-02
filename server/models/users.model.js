@@ -20,6 +20,22 @@ const userSchema = new mongoose.Schema({
     unique: true,
     max: 50,
   },
+  isProfessionSet: {
+    type: Boolean,
+    default: false,
+  },
+  profession: {
+    type: String,
+    default: "",
+  },
+  isState_countrySet: {
+    type: Boolean,
+    default: false,
+  },
+  state_country: {
+    type: String,
+    default: "",
+  },
   password: {
     type: String,
     required: true,

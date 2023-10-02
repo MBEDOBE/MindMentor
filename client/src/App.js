@@ -26,54 +26,60 @@ const Layout = () => {
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Landing />,
       },
       {
-        path: '/resources',
+        path: "/resources",
         element: <Resources />,
       },
       {
-        path: '/profile',
+        path: "/profile",
         element: <ProfilePage />,
       },
       {
-        path: '/about',
+        path: "/about",
         element: <About />,
       },
       {
-        path: '/contact',
+        path: "/contact",
         element: <Contact />,
       },
       {
-        path: '/mentor',
+        path: "/mentor",
         element: <MentorProfile />,
       },
     ],
   },
   {
-    path: '/register',
+    path: "/register",
     element: <Register />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login />,
   },
   {
-    path: '/chat',
+
+    path: "/logout",
+    element: <Logout />,
+  },
+  {
+    path: "/chat",
     element: <Chat />,
   },
 ]);
 function App() {
-  const { user } = useContext(Context);
+  const { User } = useContext(Context);
   return (
     <div className="app">
       <RouterProvider router={router}>
-        <Layout user={user} />
+
+        <Layout User={User} />
       </RouterProvider>
     </div>
   );
