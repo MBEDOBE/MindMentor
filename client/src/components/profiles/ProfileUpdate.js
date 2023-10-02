@@ -193,10 +193,7 @@ const ProfileUpdate = () => {
                   )}
                 </div>
               </div>
-              <div className="col-sm-9 text-secondary">Pitch Dark</div>
-            </div>
-            <hr />
-            <form>
+              <hr />
               <div className="row">
                 <div className="col-sm-3">
                   <h6 className="mb-0">Username</h6>
