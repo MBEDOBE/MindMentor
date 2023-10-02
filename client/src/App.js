@@ -1,19 +1,18 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/Register";
-import NavBar from "./components/nav/Navbar";
-import Footer from "./components/footer/Footer";
-import Landing from "./pages/home/Landing";
-import Resources from "./pages/resources/Resources";
-import "./App.css";
-import ProfilePage from "./pages/profile/Profile";
-import About from "./pages/about/About";
-import Contact from "./pages/contact/Contact";
-import Chat from "./pages/chat/Chat";
-import MentorProfile from "./components/profiles/MentorProfile";
-import { useContext } from "react";
-import Logout from "./pages/auth/Logout";
-import { Context } from "./context/Context";
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import Login from './pages/auth/Login';
+import Register from './pages/auth/Register';
+import NavBar from './components/nav/Navbar';
+import Footer from './components/footer/Footer';
+import Landing from './pages/home/Landing';
+import Resources from './pages/resources/Resources';
+import './App.css';
+import ProfilePage from './pages/profile/Profile';
+import About from './pages/about/About';
+import Contact from './pages/contact/Contact';
+import Chat from './pages/chat/Chat';
+import MentorProfile from './components/profiles/MentorProfile';
+import { useContext } from 'react';
+import { Context } from './context/Context';
 
 const Layout = () => {
   return (
@@ -65,6 +64,7 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
+
     path: "/logout",
     element: <Logout />,
   },
@@ -78,6 +78,7 @@ function App() {
   return (
     <div className="app">
       <RouterProvider router={router}>
+
         <Layout User={User} />
       </RouterProvider>
     </div>

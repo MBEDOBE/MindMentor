@@ -7,6 +7,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./navbar.css";
 import { Context } from "../../context/Context";
+
 const NavBar = () => {
   const { user, dispatch } = useContext(Context);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -53,14 +54,14 @@ const NavBar = () => {
             </Nav>
             <Nav className="gap-4">
               {user ? (
-                <>
-                  <Link className="nav-item" to="/profile">
-                    Profile
-                  </Link>
+               <div className="d-flex gap-4">
                   <button className="btn btn-primary" onClick={handleLogout}>
                     Logout
                   </button>
-                </>
+                  <Link className="link" to="/profile">
+                    <img className="topImg" src="./avatar.png" alt="" />
+                  </Link>
+                </div>
               ) : (
                 <Link className="btn btn-primary" to="/login">
                   Login

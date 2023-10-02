@@ -14,7 +14,7 @@ const MentorSearch = () => {
           <div className="d-flex flex-column flex-md-row align-items-end gap-4">
             <div className="col-12 col-md-4">
               <div className="form-group">
-                <label for="category">Category:</label>
+                <label htmlFor="category">Category:</label>
                 <select className="form-control" id="category">
                   <option value="">All</option>
                   <option value="programming">Mentor</option>
@@ -24,7 +24,7 @@ const MentorSearch = () => {
             </div>
             <div className="col-12 col-md-4">
               <div className="form-group">
-                <label for="location">Search:</label>
+                <label htmlFor="location">Search:</label>
                 <input type="text" className="form-control" id="location" />
               </div>
             </div>
