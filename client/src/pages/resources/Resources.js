@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './resources.css';
+import postsData from './posts.json';
 
 export default function Resources() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the JSON file
+    setPosts(postsData);
+  }, []);
+
   return (
     <div className="container">
       <section className="text-center">
@@ -12,143 +20,34 @@ export default function Resources() {
         </h4>
         <Form className="d-flex mb-4 gap-2">
           <Form.Group controlId="search" className="w-75">
-            <Form.Control
-              type="text"
-              placeholder="Search Resources by Title"
-              value=""
-              onChange=""
-            />
+            <Form.Control type="text" placeholder="Search Resources by Title" />
           </Form.Group>
-          <Button variant="primary" onClick="">
-            Search
-          </Button>
+          <Button variant="primary">Search</Button>
         </Form>
         <div className="row">
-          <div className="col-lg-4 col-md-12 mb-4">
-            <div className="card">
-              <div
-                className="bg-image hover-overlay ripple"
-                data-mdb-ripple-color="light"
-              >
-                <img src="./postimg/p1.jpg" className="img-fluid" alt="#" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Post title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" className="btn btn-primary">
-                  Read
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card">
-              <div
-                className="bg-image hover-overlay ripple"
-                data-mdb-ripple-color="light"
-              >
-                <img src="./postimg/p2.jpg" className="img-fluid" alt="post" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Post title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" className="btn btn-primary">
-                  Read
-                </a>
+          {posts.map((post) => (
+            <div className="col-lg-4 col-md-12 mb-4" key={post.id}>
+              <div className="card">
+                <div
+                  className="bg-image hover-overlay ripple"
+                  data-mdb-ripple-color="light"
+                >
+                  <img src={post.image} className="img-fluid" alt="#" />
+                </div>
+                <div className="card-body">
+                  <h5 className="card-title">{post.title}</h5>
+                  <p className="card-text post-content">
+                    {post.content.length > 200
+                      ? `${post.content.substring(0, 80)}...`
+                      : post.content}
+                  </p>
+                  <Link to={`/post/${post.id}`} className="btn btn-primary">
+                    Read More
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card">
-              <div
-                className="bg-image hover-overlay ripple"
-                data-mdb-ripple-color="light"
-              >
-                <img src="./postimg/p3.jpg" className="img-fluid" alt="post" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Post title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" className="btn btn-primary">
-                  Read
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-lg-4 col-md-12 mb-4">
-            <div className="card">
-              <div
-                className="bg-image hover-overlay ripple"
-                data-mdb-ripple-color="light"
-              >
-                <img src="./postimg/p2.jpg" className="img-fluid" alt="post" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Post title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" className="btn btn-primary">
-                  Read
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card">
-              <div
-                className="bg-image hover-overlay ripple"
-                data-mdb-ripple-color="light"
-              >
-                <img src="./postimg/p3.jpg" className="img-fluid" alt="post" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Post title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <a href="#!" className="btn btn-primary">
-                  Read
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4 col-md-6 mb-4">
-            <div className="card">
-              <div
-                className="bg-image hover-overlay ripple"
-                data-mdb-ripple-color="light"
-              >
-                <img src="./postimg/p1.jpg" className="img-fluid" alt="post" />
-              </div>
-              <div className="card-body">
-                <h5 className="card-title">Post title</h5>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <Link className="btn btn-primary">Read</Link>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
       {/* Section: Content */}

@@ -14,6 +14,7 @@ import Logout from "./pages/auth/Logout";
 import MentorProfile from "./components/profiles/MentorProfile";
 import { useContext } from "react";
 import { Context } from "./context/Context";
+import PostDetail from './pages/resources/PostDetail';
 
 const Layout = () => {
   return (
@@ -37,6 +38,11 @@ const router = createBrowserRouter([
       {
         path: "/resources",
         element: <Resources />,
+      },
+      {
+        path: "/post/:postId",
+        element: <PostDetail />
+        ,
       },
       {
         path: "/profile",
