@@ -55,7 +55,8 @@ module.exports.getUser = async (req, res, next) => {
 
 module.exports.getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.find({ _id: { $ne: req.params.id } }).select([
+    const userId = req.params.userId;
+    const users = await User.find({ _id: { $ne: userId } }).select([
       "email",
       "username",
       "_id",

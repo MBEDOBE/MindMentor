@@ -7,33 +7,55 @@ import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SidebarChat from "./SidebarChat";
 import { useNavigate } from "react-router-dom";
-import Axios from "axios";
-import { userChatRoute, userRoute } from "../api-routes/APIRoutes";
+import axios from "axios";
+import { userChatRoute, allUsersRoute } from "../api-routes/APIRoutes";
 
 const Sidebar = () => {
+  const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [chats, setChats] = useState([]);
-  const [user, setUser] = useState("");
-  const [user_id, setUser_id] = useState("");
+
+  //Current User details
+  const [userName, setUsername] = useState("");
+  const [fullName, setfullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [profession, setProfession] = useState("");
+  const [location, setLocation] = useState("");
+  const [userId, setUserId] = useState(undefined);
 
   useEffect(() => {
     const currentUser = localStorage.getItem("mindmentor-user");
 
     if (currentUser) {
-      // currentUser is a string in this case; you may want to parse it if it's stored as JSON
-      // Example parsing JSON:
-      const currentUserObjects = JSON.parse(currentUser);
+      try {
+        // Parse the currentUser string as JSON
+        const currentUserObjects = JSON.parse(currentUser);
 
-      // Accessing the username property
-      const getUserDetails = currentUserObjects;
-      const getUser_id = currentUserObjects._id;
+        // Accessing the username property
+        const getUsername = currentUserObjects.username;
+        const getFullname = currentUserObjects.fullname;
+        const getEmail = currentUserObjects.email;
+        const getProfession = currentUserObjects.profession;
+        const getLocation = currentUserObjects.state_country;
+        const getId = currentUserObjects._id;
 
-      // Seting the username in the component's state
-      setUser(getUserDetails);
-      setUser_id(getUser_id);
+        // Setting the username in the component's state
+        setUsername(getUsername);
+        setfullName(getFullname);
+        setEmail(getEmail);
+        setProfession(getProfession);
+        setLocation(getLocation);
+        setUserId(getId);
+      } catch (e) {
+        // Handle any parsing errors if the data is not valid JSON
+        console.e("Error parsing this data:", e);
+      }
     }
   }, []);
 
-  useEffect(() => {
+  {
+    /*useEffect(() => {
     const getChats = async () => {
       try {
         const { data } = await Axios.get(`${userChatRoute}/${user_id}`);
@@ -44,7 +66,24 @@ const Sidebar = () => {
       }
     };
     getChats();
-  }, [user]);
+  }, [user]);*/
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${allUsersRoute}/${userId}`);
+        setContacts(response.data);
+        setLoading(false); // Set loading to false on successful response
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error); // Set error state in case of an error
+        setLoading(false); // Set loading to false on error
+      }
+    };
+
+    fetchData();
+  }, [userId]);
 
   return (
     <div className="sidebar">
@@ -70,7 +109,14 @@ const Sidebar = () => {
       </div>
       <div className="sidebar_chats">
         <SidebarChat addNewChat />
-        <SidebarChat />
+        {contacts.map((contact) => (
+          <SidebarChat
+            contacts={contacts}
+            key={contact._id}
+            id={contact._id}
+            username={contact.username}
+          />
+        ))}
       </div>
     </div>
   );
