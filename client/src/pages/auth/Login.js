@@ -51,7 +51,7 @@ const Login = () => {
       dispatch({ type: "LOGIN_FAILURE" });
       if (data.status === true) {
         localStorage.setItem("mindmentor-user", JSON.stringify(data.user));
-        navigate("/");
+        navigate("/profile");
       }
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
     }
