@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./about.css";
-import { TiSocialTwitter, TiSocialLinkedin } from "react-icons/ti";
-import { SlSocialGithub } from "react-icons/sl";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './about.css';
+import { TiSocialTwitter, TiSocialLinkedin } from 'react-icons/ti';
+import { SlSocialGithub } from 'react-icons/sl';
 
 const About = () => {
   return (
@@ -42,13 +42,13 @@ const About = () => {
           className="d-flex container-fluid"
           lc-helper="background"
           style={{
-            height: "50vh",
-            background: "url(./about-hero.jpg) center / cover no-repeat",
+            height: '50vh',
+            background: 'url(./about-hero.jpg) center / cover no-repeat',
           }}
         ></div>
         <div
           className="container bg-light shadow py-4"
-          style={{ marginTop: "-100px" }}
+          style={{ marginTop: '-100px' }}
         >
           <div className="row text-center justify-content-center">
             <div className="col-12">
@@ -164,10 +164,10 @@ const About = () => {
       {/* Team */}
       <div className="mb-2">
         <div className="row g-0 custom-row">
-          <div className="col-xl-5 custom-column">
+          <div className="custom-column">
             <div className="bg-team text-white p-5 mt-5">
-              <h5 className="mb-4 fw-bold">CEATIVE TEAM</h5>
-              <h2 className="mb-4 fw-bolder">Meet the team</h2>
+              <h5 className="mb-4 fw-bold">PROFESSIONAL & CREATIVE TEAM</h5>
+              {/* <h2 className="mb-4 fw-bolder">Meet the team</h2> */}
               <p className="mb-4 ">
                 Meet the faces behind MindMentor, and let us help you thrive,
                 grow, and achieve your goals. Your journey to a better you
@@ -181,84 +181,208 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="row-team">
-            {/* Column 1 */}
-            <div className="column">
-              <div className="card-team">
-                <img className="img-container" src="./Taiwo.jpg" alt="" />
-                <h3>Taiwo Abiodun</h3>
-                <p>Full Stack Engineer, IT & IT-Security Specialist</p>
-                <div className="icons">
-                  <a href="#">
-                    <TiSocialTwitter size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <TiSocialLinkedin size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <SlSocialGithub size={25} color="#1b21cf" />
-                  </a>
+          <div className="py-5 team4">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-3 mb-4">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <img
+                        src="./Taiwo.jpg"
+                        alt="profile"
+                        className="img-fluid rounded-circle p-5"
+                      />
+                    </div>
+                    <div className="col-md-12 text-center">
+                      <div className="pt-2">
+                        <h5 className="mt-4 font-weight-medium mb-0">
+                        Taiwo Abiodun
+                        </h5>
+                        <h6 className="subtitle mb-3">Full Stack Engineer, IT & IT-Security Specialist</h6>
+
+                        <ul className="list-inline">
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialTwitter size={30} color="#235542" />
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialLinkedin size={30} color="#235542" />
+ 
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <SlSocialGithub size={25} color="#235542" />
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            {/* Column 2 */}
-            <div className="column">
-              <div className="card-team">
-                <img className="img-container" src="./team2.png" alt="" />
-                <h3>Daniel Mbedobe</h3>
-                <p>Frontend Engineer</p>
-                <div className="icons">
-                  <a href="#">
-                    <TiSocialTwitter size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <TiSocialLinkedin size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <SlSocialGithub size={25} color="#1b21cf" />
-                  </a>
+                <div className="col-lg-3 mb-4">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <img
+                        src="./0.png"
+                        alt="profile"
+                        className="img-fluid rounded-circle p-5"
+                      />
+                    </div>
+                    <div className="col-md-12 text-center">
+                      <div className="pt-2">
+                        <h5 className="mt-4 font-weight-medium mb-0">
+                        D. Mbedobe KUNJI
+                        </h5>
+                        <h6 className="subtitle mb-3">Frontend Engineer</h6>
+
+                        <ul className="list-inline">
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialTwitter size={30} color="#235542" />
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialLinkedin size={30} color="#235542" />
+ 
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <SlSocialGithub size={25} color="#235542" />
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            {/* Column 3 */}
-            <div className="column">
-              <div className="card-team">
-                <img className="img-container" src="./team2.png" alt="" />
-                <h3>Habiibullah Ajiboye</h3>
-                <p>Backend Engineer</p>
-                <div className="icons">
-                  <a href="#">
-                    <TiSocialTwitter size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <TiSocialLinkedin size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <SlSocialGithub size={25} color="#1b21cf" />
-                  </a>
+
+                <div className="col-lg-3 mb-4">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <img
+                        src="./Habiibullah.png"
+                        alt="profile"
+                        className="img-fluid rounded-circle p-5"
+                      />
+                    </div>
+                    <div className="col-md-12 text-center">
+                      <div className="pt-2">
+                        <h5 className="mt-4 font-weight-medium mb-0">
+                        Habiibullah Ajiboye
+                        </h5>
+                        <h6 className="subtitle mb-3">Backend Engineer</h6>
+
+                        <ul className="list-inline">
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialTwitter size={30} color="#235542" />
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialLinkedin size={30} color="#235542" />
+ 
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <SlSocialGithub size={25} color="#235542" />
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            {/* Column 4 */}
-            <div className="column">
-              <div className="card-team">
-                <img className="img-container" src="./team2.png" alt="" />
-                <h3>Ibukun Akintola</h3>
-                <p>Frontend Engineer</p>
-                <div className="icons">
-                  <a href="#">
-                    <TiSocialTwitter size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <TiSocialLinkedin size={30} color="#1b21cf" />
-                  </a>
-                  <a href="#">
-                    <SlSocialGithub size={25} color="#1b21cf" />
-                  </a>
+
+                <div className="col-lg-3 mb-4">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <img
+                        src="./Avatar.png"
+                        alt="profile"
+                        className="img-fluid rounded-circle p-5"
+                      />
+                    </div>
+                    <div className="col-md-12 text-center">
+                      <div className="pt-2">
+                        <h5 className="mt-4 font-weight-medium mb-0">
+                        Ibukun Akintola
+                        </h5>
+                        <h6 className="subtitle mb-3">Frontend Engineer</h6>
+
+                        <ul className="list-inline">
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialTwitter size={30} color="#235542" />
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <TiSocialLinkedin size={30} color="#235542" />
+ 
+                            </a>
+                          </li>
+                          <li className="list-inline-item">
+                            <a
+                              href="#"
+                              className="text-decoration-none d-block px-1"
+                            >
+                              <SlSocialGithub size={25} color="#235542" />
+                            </a>
+                          </li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
 
@@ -281,7 +405,7 @@ const About = () => {
                 </h3>
               </div>
             </div>
-            <div class="col-md-3 text-md-right">
+            <div className="col-md-3 text-md-right">
               <Link
                 className="btn btn-primary btn-lg"
                 to="/register"
