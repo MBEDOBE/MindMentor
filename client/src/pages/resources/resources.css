@@ -20,3 +20,6 @@
   border-color: var(--primary) !important;
   color: var(--white) !important;
 }
+.post-content {
+  text-align: justify !important;
+}
