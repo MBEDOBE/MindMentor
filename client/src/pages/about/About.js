@@ -1,6 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './about.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./about.css";
+import { TiSocialTwitter, TiSocialLinkedin } from "react-icons/ti";
+import { SlSocialGithub } from "react-icons/sl";
+
 const About = () => {
   return (
     <>
@@ -39,13 +42,13 @@ const About = () => {
           className="d-flex container-fluid"
           lc-helper="background"
           style={{
-            height: '50vh',
-            background: 'url(./about-hero.jpg) center / cover no-repeat',
+            height: "50vh",
+            background: "url(./about-hero.jpg) center / cover no-repeat",
           }}
         ></div>
         <div
           className="container bg-light shadow py-4"
-          style={{ marginTop: '-100px' }}
+          style={{ marginTop: "-100px" }}
         >
           <div className="row text-center justify-content-center">
             <div className="col-12">
@@ -178,9 +181,82 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="col-xl-7">
-            <div className="">
-              <img className="img-fluid" src="./team2.png" alt="" />
+          <div className="row-team">
+            {/* Column 1 */}
+            <div className="column">
+              <div className="card-team">
+                <img className="img-container" src="./Taiwo.jpg" alt="" />
+                <h3>Taiwo Abiodun</h3>
+                <p>Full Stack Engineer, IT & IT-Security Specialist</p>
+                <div className="icons">
+                  <a href="#">
+                    <TiSocialTwitter size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <TiSocialLinkedin size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <SlSocialGithub size={25} color="#1b21cf" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Column 2 */}
+            <div className="column">
+              <div className="card-team">
+                <img className="img-container" src="./team2.png" alt="" />
+                <h3>Daniel Mbedobe</h3>
+                <p>Frontend Engineer</p>
+                <div className="icons">
+                  <a href="#">
+                    <TiSocialTwitter size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <TiSocialLinkedin size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <SlSocialGithub size={25} color="#1b21cf" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Column 3 */}
+            <div className="column">
+              <div className="card-team">
+                <img className="img-container" src="./team2.png" alt="" />
+                <h3>Habiibullah Ajiboye</h3>
+                <p>Backend Engineer</p>
+                <div className="icons">
+                  <a href="#">
+                    <TiSocialTwitter size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <TiSocialLinkedin size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <SlSocialGithub size={25} color="#1b21cf" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Column 4 */}
+            <div className="column">
+              <div className="card-team">
+                <img className="img-container" src="./team2.png" alt="" />
+                <h3>Ibukun Akintola</h3>
+                <p>Frontend Engineer</p>
+                <div className="icons">
+                  <a href="#">
+                    <TiSocialTwitter size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <TiSocialLinkedin size={30} color="#1b21cf" />
+                  </a>
+                  <a href="#">
+                    <SlSocialGithub size={25} color="#1b21cf" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
