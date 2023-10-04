@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SidebarChat.css";
 import { Avatar } from "@mui/material";
 
-function SidebarChat({ addNewChat }) {
+function SidebarChat({ addNewChat, username }) {
+  const [currentSelected, setCurrentSelected] = useState(undefined);
   const createChat = () => {
     const userName = prompt("Please enter a user to chat with");
 
@@ -13,9 +14,23 @@ function SidebarChat({ addNewChat }) {
 
   return !addNewChat ? (
     <div className="sidebarChat">
-      <Avatar />
       <div className="sidebarChat_info">
-        <h2>Other Users</h2>
+        {/*contacts.map((contact, index) => {
+          return (
+            <div
+              key={index}
+              className={`contact ${
+                index === currentSelected ? "selected" : ""
+              }`} /*
+            onClick={() => changeCurrentChat(index, contact)}
+            >
+              <div className="username">
+                <h2>{contact.username}</h2>
+              </div>
+            </div>
+          );
+        })*/}
+        <h2>{username}</h2>
         <p>This is the last message</p>
       </div>
     </div>
