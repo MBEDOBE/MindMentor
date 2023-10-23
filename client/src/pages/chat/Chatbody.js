@@ -3,41 +3,26 @@ import "./Chatbody.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+import HomeIcon from "@mui/icons-material/Home";
 import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
-//import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-function Chat() {
+function Chat({ currentChat }) {
+  const navigate = useNavigate();
   const [input, setInput] = useState("");
-  const [username, setUsername] = useState("");
 
-  useEffect(() => {
-    const currentUser = localStorage.getItem("mindmentor-user");
-
-    if (currentUser) {
-      try {
-        // Parse the currentUser string as JSON
-        const currentUserObjects = JSON.parse(currentUser);
-
-        // Accessing the username property
-        const getUsername = currentUserObjects.username;
-
-        // Seting the username in the component's state
-        setUsername(getUsername);
-      } catch (e) {
-        // Handle any parsing errors if the data is not valid JSON
-        console.e("Error parsing this data:", e);
-      }
-    }
-  }, []);
+  const handleClick = (e) => {
+    navigate("/");
+  };
 
   return (
     <div className="chatbody">
       <div className="chatbody_header">
         <Avatar />
         <div className="chatbody_headerInfo">
-          <h3>{username}</h3>
+          <h3>{currentChat.username}</h3>
           <p>Last seen at...</p>
         </div>
         <div className="chatbody_headerRight">
@@ -49,6 +34,9 @@ function Chat() {
           </IconButton>
           <IconButton>
             <MoreVertIcon />
+          </IconButton>
+          <IconButton onClick={(e) => handleClick(e)}>
+            <HomeIcon />
           </IconButton>
         </div>
       </div>

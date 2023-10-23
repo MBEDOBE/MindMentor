@@ -17,3 +17,57 @@
 .sidebarChat_info {
   margin-left: 15px;
 }
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  gap: 0.8rem;
+}
+
+.contacts::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+.contacts::-webkit-scrollbar-thumb {
+  background-color: #ffffff39;
+  width: 0.1rem;
+  border-radius: 1rem;
+}
+
+.contact {
+  display: flex;
+  padding: 0.4rem;
+  cursor: pointer;
+  min-height: 5rem;
+  width: 90%;
+  border-radius: 0.2rem;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #f6f6f6;
+  transition: 0.5s ease-in-out;
+}
+
+.contact:hover {
+  background-color: #ebebeb;
+}
+
+.contact .img {
+  height: 3rem;
+}
+
+.username > h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.selected {
+  background-color: rgb(187, 199, 199);
+}
+
+@media screen and (min-width: 720px) and (max-width: 1080px) {
+  .username > h2 {
+    font-size: 1rem;
+  }
+}

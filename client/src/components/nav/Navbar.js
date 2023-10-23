@@ -51,10 +51,17 @@ const NavBar = () => {
               <Link className="nav-item" to="/contact">
                 Contact
               </Link>
+              {user ? (
+                <Link className="link" to="/chat">
+                  Chat
+                </Link>
+              ) : (
+                <Link></Link>
+              )}
             </Nav>
             <Nav className="gap-4">
               {user ? (
-               <div className="d-flex gap-4">
+                <div className="d-flex gap-4">
                   <button className="btn btn-primary" onClick={handleLogout}>
                     Logout
                   </button>
