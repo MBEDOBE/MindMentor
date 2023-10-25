@@ -8,14 +8,63 @@ import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
 import { useNavigate } from "react-router-dom";
+import Picker from "emoji-picker-react";
+import axios from "axios";
+import { addMessageRoute, getMessageRoute } from "../api-routes/APIRoutes";
 
-function Chat({ currentChat }) {
+function Chat({ currentChat, userId }) {
   const navigate = useNavigate();
-  const [input, setInput] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [msg, setMsg] = useState("");
+  const [messages, setMessages] = useState([]);
+  const [error, setError] = useState(null);
 
   const handleClick = (e) => {
     navigate("/");
   };
+
+  const handleEmojiPickerHideShow = () => {
+    setShowEmojiPicker(!showEmojiPicker);
+  };
+
+  const handleEmojiCLick = (emoji) => {
+    let message = msg;
+    message += emoji.emoji;
+    setMsg(message);
+  };
+
+  const sendMsg = (e) => {
+    e.preventDefault();
+    if (msg.length > 0) {
+      handleSendMsg(msg);
+      setMsg("");
+    }
+  };
+
+  const handleSendMsg = async (msg) => {
+    await axios.post(addMessageRoute, {
+      from: userId,
+      to: currentChat._id,
+      message: msg,
+    });
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(getMessageRoute, {
+          to: currentChat._id,
+          from: userId,
+        });
+        setMessages(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error); // Set error state in case of an error
+      }
+    };
+
+    fetchData();
+  }, [currentChat]);
 
   return (
     <div className="chatbody">
@@ -41,25 +90,41 @@ function Chat({ currentChat }) {
         </div>
       </div>
       <div className="chatbody_body">
-        <div className={`chat_reciever ${true && "chat_message"}`}>
+        {messages.map((message) => {
+          return (
+            <div>
+              <div
+                className={`message ${
+                  message.fromSelf ? "sended" : "recieved"
+                }`}
+              >
+                <div className="content">
+                  <p>{message.message}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        {/*<div className={`chat_reciever ${true && "chat_message"}`}>
           <span className="chat_name">Taiwo</span>Hello there
           <span className="chat_timestamp">8:00pm</span>
         </div>
         <div className="chat_message">
           <span className="chat_name">Daniel</span>Hi friend
           <span className="chat_timestamp">8:42pm</span>
-        </div>
+        </div>*/}
       </div>
       <div className="chatbody_footer">
-        <InsertEmoticonIcon />
+        <InsertEmoticonIcon onClick={handleEmojiPickerHideShow} />
+        {showEmojiPicker && <Picker onEmojiClick={handleEmojiCLick} />}
         <form>
           <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+            value={msg}
+            onChange={(e) => setMsg(e.target.value)}
             placeholder="Type a message"
             type="text"
           />
-          <button /*onClick={sendMessage}*/ type="submit">
+          <button onClick={sendMsg} type="submit">
             Send a message
           </button>
         </form>

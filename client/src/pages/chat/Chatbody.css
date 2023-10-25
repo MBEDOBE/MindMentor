@@ -27,11 +27,36 @@
 
 .chatbody_body {
   flex: 1;
-  padding: 30px;
+  padding: 1rem 2rem;
   background-image: url("https://th.bing.com/th/id/OIP.C_KAOIk3RI04OSt2wVvUQQHaK3?w=200&h=293&c=7&r=0&o=5&dpr=1.3&pid=1.7");
   background-position: center;
   background-repeat: repeat;
-  overflow: scroll;
+  overflow: auto;
+  gap: 1rem;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.message > .content {
+  max-width: 40%;
+  overflow-wrap: break-word;
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #d3c9c9;
+  justify-content: flex-start;
+}
+
+.sended {
+  justify-content: flex-end;
+}
+
+.sended > .content {
+  background-color: #f1c6b8;
 }
 
 .chat_message {
@@ -90,4 +115,13 @@
 .chatbody_footer > .MuiSvgIcon-root {
   color: gray;
   padding: 1.5px;
+  position: relative;
+}
+
+.chatbody_footer > .EmojiPickerReact {
+  position: absolute;
+  top: -200px;
+  background-color: #235542;
+  box-shadow: 0 5px 10px #0cd588;
+  border-color: #0cd588;
 }

@@ -12,7 +12,11 @@ import {
 } from "react-router-dom";
 //import Pusher from "pusher-js";
 import axios from "axios";
-import { UserRoute, getAllUsersRoute } from "../api-routes/APIRoutes";
+import {
+  addMessageRoute,
+  getMessageRoute,
+  getAllUsersRoute,
+} from "../api-routes/APIRoutes";
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -108,7 +112,7 @@ const Chat = () => {
         {currentChat === undefined ? (
           <Welcome username={username} />
         ) : (
-          <Chatbody currentChat={currentChat} />
+          <Chatbody currentChat={currentChat} userId={userId} />
         )}
       </div>
     </div>

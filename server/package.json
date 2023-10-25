@@ -19,6 +19,5 @@
     "nodemon": "^3.0.1",
     "socket.io": "^4.7.2"
   },
-  "devDependencies": {},
   "description": ""
 }

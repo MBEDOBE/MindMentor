@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
+const socket = require("socket.io");
 const port = process.env.PORT || 4001;
 
 app.use(cors());
@@ -41,7 +42,7 @@ const MessageRoutes = require("./routes/message.routes");
 // Call/use the API/files
 app.use("/api/auth", UsersRoutes);
 app.use("/chat", ChatRoutes);
-app.use("/message", MessageRoutes);
+app.use("/api/messages", MessageRoutes);
 
 // Starting the server
 app.listen(port, () => {
