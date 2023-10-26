@@ -12,7 +12,11 @@ import {
 } from "react-router-dom";
 //import Pusher from "pusher-js";
 import axios from "axios";
-import { host, getAllUsersRoute } from "../api-routes/APIRoutes";
+import {
+  addMessageRoute,
+  getMessageRoute,
+  getAllUsersRoute,
+} from "../api-routes/APIRoutes";
 import { io } from "socket.io-client";
 
 const Chat = () => {
@@ -43,10 +47,8 @@ const Chat = () => {
   }, []);
 
   useEffect(() => {
-    if (currentThis) {
-      socket.current = io(host);
-      socket.current.emit("add-user", currentThis ? currentThis._id : "N/A");
-    }
+    console.log("username:", currentThis ? currentThis._id : "N/A");
+    console.log("currentThis:", currentThis ? currentThis.fullname : "N/A");
   }, [currentThis]);
 
   useEffect(() => {
@@ -106,7 +108,7 @@ const Chat = () => {
         {currentChat === undefined ? (
           <Welcome username={username} />
         ) : (
-          <Chatbody currentChat={currentChat} userId={userId} socket={socket} />
+          <Chatbody currentChat={currentChat} userId={userId} />
         )}
       </div>
     </div>

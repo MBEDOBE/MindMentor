@@ -1,23 +1,27 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./Chatbody.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
+import HomeIcon from "@mui/icons-material/Home";
 import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MicIcon from "@mui/icons-material/Mic";
+import { useNavigate } from "react-router-dom";
 import Picker from "emoji-picker-react";
 import axios from "axios";
 import { addMessageRoute, getMessageRoute } from "../api-routes/APIRoutes";
-import { v4 as uuidv4 } from "uuid";
 
-function Chat({ currentChat, userId, socket }) {
+function Chat({ currentChat, userId }) {
+  const navigate = useNavigate();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [msg, setMsg] = useState("");
   const [messages, setMessages] = useState([]);
   const [error, setError] = useState(null);
-  const [messageArrival, setMessageArrival] = useState(null);
-  const scrollRef = useRef();
+
+  const handleClick = (e) => {
+    navigate("/");
+  };
 
   const handleEmojiPickerHideShow = () => {
     setShowEmojiPicker(!showEmojiPicker);
@@ -43,50 +47,23 @@ function Chat({ currentChat, userId, socket }) {
       to: currentChat._id,
       message: msg,
     });
-    socket.current.emit("send-msg", {
-      from: userId,
-      to: currentChat._id,
-      message: msg,
-    });
-
-    const msgs = [...messages];
-    msgs.push({ fromSelf: true, message: msg });
-    setMessages(msgs);
   };
 
   useEffect(() => {
-    if (socket.current) {
-      socket.current.on("msg-recieve", (msg) => {
-        setMessageArrival({ fromSelf: false, message: msg });
-      });
-    }
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(getMessageRoute, {
+          to: currentChat._id,
+          from: userId,
+        });
+        setMessages(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setError(error); // Set error state in case of an error
+      }
+    };
 
-  useEffect(() => {
-    messageArrival && setMessages((prev) => [...prev, messageArrival]);
-  }, [messageArrival]);
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
-  }, [messages]);
-
-  useEffect(() => {
-    if (currentChat) {
-      const fetchData = async () => {
-        try {
-          const response = await axios.post(getMessageRoute, {
-            to: currentChat._id,
-            from: userId,
-          });
-          setMessages(response.data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-          setError(error); // Set error state in case of an error
-        }
-      };
-
-      fetchData();
-    }
+    fetchData();
   }, [currentChat]);
 
   return (
@@ -107,12 +84,15 @@ function Chat({ currentChat, userId, socket }) {
           <IconButton>
             <MoreVertIcon />
           </IconButton>
+          <IconButton onClick={(e) => handleClick(e)}>
+            <HomeIcon />
+          </IconButton>
         </div>
       </div>
       <div className="chatbody_body">
         {messages.map((message) => {
           return (
-            <div ref={scrollRef} key={uuidv4()}>
+            <div>
               <div
                 className={`message ${
                   message.fromSelf ? "sended" : "recieved"

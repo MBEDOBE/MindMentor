@@ -5,7 +5,6 @@ export const logoutRoute = `${host}/api/auth/logout`;
 export const getAllUsersRoute = `${host}/api/auth/allusers`;
 export const accountSettingsRoute = `${host}/api/auth/accountsettings/`;
 export const accountDeleteRoute = `${host}/api/auth/accountdelete/`;
-export const recieveMessageRoute = `${host}/api/message/getmsg`;
 export const setAvatarRoute = `${host}/api/auth/setavatar`;
 export const getUserRoute = `${host}/api/auth/user`;
 export const createChatRoute = `${host}/chat`;

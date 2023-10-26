@@ -5,10 +5,16 @@ import ChatIcon from "@mui/icons-material/Chat";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Avatar, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
 import SidebarChat from "./SidebarChat";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ contacts, changeChat }) => {
-  const [currentSelected, setCurrentSelected] = useState(undefined);
+  const navigate = useNavigate();
+  const handleClick = (e) => {
+    navigate("/");
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar_header">
@@ -22,6 +28,9 @@ const Sidebar = ({ contacts, changeChat }) => {
           </IconButton>
           <IconButton>
             <MoreVertIcon />
+          </IconButton>
+          <IconButton onClick={(e) => handleClick(e)}>
+            <HomeIcon />
           </IconButton>
         </div>
       </div>
