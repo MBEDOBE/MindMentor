@@ -24,6 +24,7 @@ const Chat = () => {
   const [chats, setChats] = useState([]);
   const [currentThis, setCurrentThis] = useState(undefined);
   const [currentChat, setCurrentChat] = useState(undefined);
+  const [lastSentMessage, setLastSentMessage] = useState(null);
 
   //Current User details
   const [username, setUsername] = useState("");

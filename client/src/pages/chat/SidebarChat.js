@@ -10,13 +10,15 @@ function SidebarChat({ addNewChat, contacts, changeChat }) {
     changeChat(contact);
   };
 
-  const createChat = () => {
+  {
+    /*const createChat = () => {
     const userName = prompt("Please enter a user to chat with");
 
     if (userName) {
       //input database stuffs here
     }
-  };
+  };*/
+  }
 
   return !addNewChat ? (
     <div className="contacts">
@@ -34,15 +36,15 @@ function SidebarChat({ addNewChat, contacts, changeChat }) {
             )}
             <div className="username">
               <h2>{contact.username}</h2>
-              <p>This is the last message</p>
+              <p>{contact.profession}</p>
             </div>
           </div>
         );
       })}
     </div>
   ) : (
-    <div onClick={createChat} className="sidebarChat">
-      <h2>Add new chat</h2>
+    <div /*onClick={createChat}*/ className="sidebarChat">
+      <h2>Chats</h2>
     </div>
   );
 }

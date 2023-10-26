@@ -20,15 +20,6 @@ const Sidebar = ({ contacts, changeChat }) => {
       <div className="sidebar_header">
         <Avatar src="https://th.bing.com/th/id/OIP.M6W6kdu53XZ356qV8lNQvQHaE7?w=288&h=191&c=7&r=0&o=5&dpr=1.3&pid=1.7" />
         <div className="sidebar_headerRight">
-          <IconButton>
-            <DonutLargeIcon />
-          </IconButton>
-          <IconButton>
-            <ChatIcon />
-          </IconButton>
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
           <IconButton onClick={(e) => handleClick(e)}>
             <HomeIcon />
           </IconButton>
