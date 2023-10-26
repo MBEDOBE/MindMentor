@@ -6,7 +6,6 @@ const {
   accountSettings,
   accountDelete,
 } = require("../controllers/users.controller");
-
 const router = require("express").Router();
 
 router.post("/register", register);

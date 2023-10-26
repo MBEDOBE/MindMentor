@@ -5,7 +5,7 @@ const {
 
 const router = require("express").Router();
 
-router.post("/", addMessage);
-router.get("/:chatId", getMessages);
+router.post("/addmsg/", addMessage);
+router.post("/getmsg/", getMessages);
 
 module.exports = router;

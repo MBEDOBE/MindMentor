@@ -45,7 +45,10 @@ module.exports.getUser = async (req, res, next) => {
     const users = await User.find({ _id: { $in: req.params.id } }).select([
       "email",
       "username",
+      "fullname",
+      "avatarImage",
       "_id",
+      "profession",
     ]);
     return res.json(users);
   } catch (ex) {
@@ -59,7 +62,10 @@ module.exports.getAllUsers = async (req, res, next) => {
     const users = await User.find({ _id: { $ne: userId } }).select([
       "email",
       "username",
+      "fullname",
+      "avatarImage",
       "_id",
+      "profession",
     ]);
     return res.json(users);
   } catch (ex) {
